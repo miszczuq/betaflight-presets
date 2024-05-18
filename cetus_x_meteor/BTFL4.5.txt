@@ -38,9 +38,11 @@ aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
 aux 2 2 1 1300 1700 0 0
 aux 3 13 0 1700 2100 1 0
-aux 4 13 2 900 1300 1 0
+aux 4 13 2 1300 1700 1 0
 aux 5 35 0 1700 2100 1 0
 aux 6 35 2 1700 2100 1 0
+aux 7 49 0 1700 2100 1 0
+aux 8 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
@@ -62,6 +64,7 @@ set acc_calibration = -15,7,20,1
 set blackbox_device = SERIAL
 set motor_pwm_protocol = DSHOT600
 set yaw_motors_reversed = ON
+set small_angle = 90
 set osd_cap_alarm = 550
 set osd_tim1 = 1280
 set osd_tim2 = 513
@@ -91,6 +94,11 @@ set craft_name = CetusMeteor
 set pilot_name = Misza
 
 profile 0
+
+# profile 0
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 50
+set launch_angle_limit = 50
 
 profile 1
 
@@ -146,6 +154,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
