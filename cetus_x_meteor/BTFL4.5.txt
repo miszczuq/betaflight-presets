@@ -16,6 +16,8 @@ manufacturer_id BEFH
 mcu_id 001f00493535510236323431
 signature 
 
+# name: CetusMeteor
+
 # feature
 feature SOFTSERIAL
 feature TELEMETRY
@@ -27,13 +29,19 @@ serial 0 64 115200 57600 0 115200
 serial 1 2048 115200 57600 0 115200
 serial 30 0 115200 19200 0 19200
 
+# beacon
+beacon RX_LOST
+beacon RX_SET
+
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
 aux 2 2 1 1300 1700 0 0
-aux 3 27 2 900 1300 0 0
-aux 4 13 0 1700 2100 0 0
-aux 5 35 2 1700 2100 0 0
+aux 3 13 0 1700 2100 0 0
+aux 4 13 0 900 900 1 35
+
+# adjrange
+adjrange 0 0 2 900 2100 12 2 0 0
 
 # vtxtable
 vtxtable bands 5
@@ -53,8 +61,8 @@ set blackbox_device = SERIAL
 set motor_pwm_protocol = DSHOT600
 set yaw_motors_reversed = ON
 set osd_cap_alarm = 550
-set osd_tim1 = 0
-set osd_tim2 = 1281
+set osd_tim1 = 1280
+set osd_tim2 = 513
 set osd_vbat_pos = 14728
 set osd_remaining_time_estimate_pos = 2401
 set osd_flymode_pos = 2447
@@ -77,6 +85,8 @@ set vcd_video_system = NTSC
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
 set expresslrs_switch_mode = HYBRID
+set craft_name = CetusMeteor
+set pilot_name = Misza
 
 profile 0
 
