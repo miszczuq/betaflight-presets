@@ -1,0 +1,139 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F411 (S411) 4.5.0 Apr 28 2024 / 04:17:18 (c155f5830) MSP API: 1.46
+# config rev: 3068e6e
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name BETAFPVF4SX1280
+manufacturer_id BEFH
+mcu_id 001f00493535510236323431
+signature 
+
+# feature
+feature SOFTSERIAL
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# serial
+serial 0 64 115200 57600 0 115200
+serial 1 2048 115200 57600 0 115200
+serial 30 0 115200 19200 0 19200
+
+# aux
+aux 0 0 3 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 2 1 1300 1700 0 0
+aux 3 27 2 900 1300 0 0
+aux 4 13 0 1700 2100 0 0
+aux 5 35 2 1700 2100 0 0
+
+# vtxtable
+vtxtable bands 5
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 5
+vtxtable powervalues 1 0 2 3 4
+vtxtable powerlabels 25 PIT 100 200 400
+
+# master
+set acc_calibration = -15,7,20,1
+set blackbox_device = SERIAL
+set motor_pwm_protocol = DSHOT600
+set yaw_motors_reversed = ON
+set osd_cap_alarm = 550
+set osd_tim1 = 0
+set osd_tim2 = 1281
+set osd_vbat_pos = 14728
+set osd_remaining_time_estimate_pos = 2401
+set osd_flymode_pos = 2447
+set osd_crosshairs_pos = 2254
+set osd_ah_pos = 2159
+set osd_warnings_pos = 14506
+set osd_avg_cell_voltage_pos = 2433
+set osd_battery_usage_pos = 2407
+set osd_disarmed_pos = 2081
+set osd_stat_bitmask = 2118826
+set osd_displayport_device = AUTO
+set osd_canvas_width = 30
+set osd_canvas_height = 13
+set vtx_band = 5
+set vtx_channel = 1
+set vtx_power = 3
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
+set vtx_freq = 5658
+set vcd_video_system = NTSC
+set expresslrs_uid = 118,82,212,58,1,20
+set expresslrs_rate_index = 1
+set expresslrs_switch_mode = HYBRID
+
+profile 0
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = Slowest
+set roll_rc_rate = 1
+set pitch_rc_rate = 1
+set yaw_rc_rate = 1
+set roll_expo = 70
+set pitch_expo = 70
+set yaw_expo = 70
+set roll_srate = 50
+set pitch_srate = 50
+set yaw_srate = 50
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = Cinemati
+set roll_rc_rate = 5
+set pitch_rc_rate = 5
+set yaw_rc_rate = 5
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 50
+set pitch_srate = 50
+set yaw_srate = 50
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = Normal
+
+rateprofile 3
+
+# rateprofile 3
+set rateprofile_name = Freestyl
+set roll_rc_rate = 10
+set pitch_rc_rate = 10
+set yaw_rc_rate = 10
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
