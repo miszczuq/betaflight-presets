@@ -61,10 +61,17 @@ vtxtable powerlevels 5
 vtxtable powervalues 1 0 2 3 4
 vtxtable powerlabels 25 PIT 100 200 400
 
+# rxfail
+rxfail 5 s 1000
+
 # master
 set acc_calibration = -15,7,20,1
 set blackbox_device = SERIAL
 set motor_pwm_protocol = DSHOT600
+set failsafe_off_delay = 30
+set failsafe_throttle = 1200
+set failsafe_throttle_low_delay = 50
+set failsafe_procedure = AUTO-LAND
 set yaw_motors_reversed = ON
 set small_angle = 90
 set osd_cap_alarm = 550
