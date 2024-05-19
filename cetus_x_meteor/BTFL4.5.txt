@@ -72,6 +72,7 @@ set failsafe_off_delay = 30
 set failsafe_throttle = 1200
 set failsafe_throttle_low_delay = 50
 set failsafe_procedure = AUTO-LAND
+set vbat_max_cell_voltage = 440
 set yaw_motors_reversed = ON
 set small_angle = 90
 set osd_cap_alarm = 550
