@@ -22,6 +22,7 @@ signature
 feature -AIRMODE
 feature SOFTSERIAL
 feature TELEMETRY
+feature RSSI_ADC
 feature LED_STRIP
 feature OSD
 
@@ -75,19 +76,28 @@ set failsafe_procedure = AUTO-LAND
 set vbat_max_cell_voltage = 440
 set yaw_motors_reversed = ON
 set small_angle = 90
-set osd_cap_alarm = 550
-set osd_tim1 = 1280
-set osd_tim2 = 513
+set osd_warn_bitmask = 34749
+set osd_cap_alarm = 450
+set osd_tim1 = 0
+set osd_tim2 = 2
 set osd_vbat_pos = 14728
+set osd_rssi_pos = 2427
+set osd_rssi_dbm_pos = 2422
+set osd_tim_1_pos = 2408
+set osd_tim_2_pos = 2415
 set osd_remaining_time_estimate_pos = 2401
 set osd_flymode_pos = 2447
 set osd_crosshairs_pos = 2254
-set osd_ah_pos = 2159
+set osd_ah_pos = 111
+set osd_altitude_pos = 55
+set osd_pidrate_profile_pos = 310
 set osd_warnings_pos = 14506
 set osd_avg_cell_voltage_pos = 2433
-set osd_battery_usage_pos = 2407
+set osd_battery_usage_pos = 359
 set osd_disarmed_pos = 2081
-set osd_stat_bitmask = 2118826
+set osd_rate_profile_name_pos = 2453
+set osd_pid_profile_name_pos = 278
+set osd_stat_bitmask = 1881175726
 set osd_displayport_device = AUTO
 set osd_canvas_width = 30
 set osd_canvas_height = 13
