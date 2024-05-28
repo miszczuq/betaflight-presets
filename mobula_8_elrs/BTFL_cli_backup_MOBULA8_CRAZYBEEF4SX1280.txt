@@ -42,14 +42,13 @@ beacon RX_SET
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 2 1 1300 1700 0 0
-aux 3 13 0 1700 2100 1 0
-aux 4 13 2 1300 1700 1 0
-aux 5 28 1 1300 1700 0 0
-aux 6 35 0 1700 2100 1 0
-aux 7 35 2 1700 2100 1 0
-aux 8 49 0 1700 2100 1 0
-aux 9 49 2 900 1300 1 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 28 2 1300 2100 0 0
+aux 5 35 0 1700 2100 1 0
+aux 6 35 2 1700 2100 1 0
+aux 7 49 0 1700 2100 1 0
+aux 8 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
@@ -66,6 +65,9 @@ vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
 vtxtable powerlevels 5
 vtxtable powervalues 10 2 14 20 26
 vtxtable powerlabels 0 RCE 25 100 400
+
+# rxfail
+rxfail 5 s 1000
 
 # master
 set gyro_lpf1_static_hz = 200
@@ -85,11 +87,9 @@ set dshot_idle_value = 800
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_poles = 12
-set failsafe_delay = 4
+set failsafe_off_delay = 25
 set failsafe_recovery_delay = 20
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 310
-set vbat_warning_cell_voltage = 320
 set ibata_scale = 470
 set yaw_motors_reversed = ON
 set small_angle = 180
@@ -97,21 +97,32 @@ set deadband = 1
 set yaw_deadband = 1
 set pid_process_denom = 4
 set simplified_gyro_filter = OFF
-set osd_rssi_pos = 314
-set osd_link_quality_pos = 2392
-set osd_rssi_dbm_pos = 2360
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 400
+set osd_tim1 = 2562
+set osd_tim2 = 1539
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2424
+set osd_rssi_dbm_pos = 2392
 set osd_tim_2_pos = 2433
-set osd_flymode_pos = 2457
-set osd_throttle_pos = 2425
-set osd_vtx_channel_pos = 2305
-set osd_current_pos = 2336
+set osd_flymode_pos = 2440
+set osd_throttle_pos = 377
+set osd_vtx_channel_pos = 2453
+set osd_crosshairs_pos = 2253
+set osd_ah_pos = 2126
+set osd_current_pos = 288
 set osd_mah_drawn_pos = 2368
-set osd_craft_name_pos = 2442
+set osd_craft_name_pos = 394
 set osd_warnings_pos = 2345
 set osd_avg_cell_voltage_pos = 2401
 set osd_disarmed_pos = 2314
 set osd_esc_rpm_pos = 161
-set osd_core_temp_pos = 2328
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2106
+set osd_rate_profile_name_pos = 2445
+set osd_stat_bitmask = 8402604
 set osd_canvas_height = 13
 set debug_mode = DUAL_GYRO_SCALED
 set vtx_band = 5
