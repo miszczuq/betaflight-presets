@@ -25,6 +25,10 @@ resource LED 1 NONE
 dma ADC 1 1
 # ADC 1: DMA2 Stream 4 Channel 0
 
+# feature
+feature -AIRMODE
+feature OSD
+
 # serial
 serial 0 0 115200 57600 0 2000000
 serial 1 2048 115200 57600 0 115200
@@ -39,7 +43,7 @@ aux 1 1 1 900 1275 0 0
 aux 2 2 1 1300 1700 0 0
 aux 3 13 0 1700 2100 1 0
 aux 4 13 2 1300 1700 1 0
-aux 5 28 1 1300 2100 0 0
+aux 5 28 1 1300 1700 0 0
 aux 6 35 0 1700 2100 1 0
 aux 7 35 2 1700 2100 1 0
 aux 8 49 0 1700 2100 1 0
@@ -113,6 +117,7 @@ set vtx_channel = 8
 set vtx_power = 5
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
+set vcd_video_system = NTSC
 set pinio_box = 255,255,255,255
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
@@ -145,6 +150,9 @@ set f_yaw = 143
 set d_min_roll = 43
 set d_min_pitch = 48
 set d_max_advance = 0
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 50
+set launch_angle_limit = 50
 set thrust_linear = 20
 set feedforward_jitter_factor = 5
 set feedforward_boost = 18
@@ -160,13 +168,6 @@ set simplified_pitch_d_gain = 85
 set simplified_pitch_pi_gain = 90
 set tpa_mode = PD
 set tpa_breakpoint = 1250
-
-profile 0
-
-# profile 0
-set launch_control_mode = PITCHONLY
-set launch_trigger_throttle_percent = 50
-set launch_angle_limit = 50
 
 profile 1
 
@@ -220,5 +221,8 @@ set yaw_rc_rate = 10
 set roll_srate = 70
 set pitch_srate = 70
 set yaw_srate = 70
+
+# restore original rateprofile selection
+rateprofile 2
 
 # save configuration
