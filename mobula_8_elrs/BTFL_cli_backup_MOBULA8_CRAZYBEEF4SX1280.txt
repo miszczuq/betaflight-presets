@@ -18,9 +18,15 @@ signature
 
 # name: Mobula8
 
+# resources
+resource LED 1 NONE
+
+# dma
+dma ADC 1 1
+# ADC 1: DMA2 Stream 4 Channel 0
+
 # feature
 feature -AIRMODE
-feature SOFTSERIAL
 feature TELEMETRY
 feature RSSI_ADC
 feature OSD
@@ -36,14 +42,13 @@ beacon RX_SET
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 2 1 1300 1700 0 0
-aux 3 13 0 1700 2100 1 0
-aux 4 13 2 1300 1700 1 0
-aux 5 28 1 1300 2100 0 0
-aux 6 35 0 1700 2100 1 0
-aux 7 35 2 1700 2100 1 0
-aux 8 49 0 1700 2100 1 0
-aux 9 49 2 900 1300 1 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 28 2 1300 2100 0 0
+aux 5 35 0 1700 2100 1 0
+aux 6 35 2 1700 2100 1 0
+aux 7 49 0 1700 2100 1 0
+aux 8 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
@@ -63,45 +68,71 @@ vtxtable powerlabels 25 PIT 100 200 400
 # rxfail
 rxfail 5 s 1000
 
+# rxfail
+rxfail 5 s 1000
+
 # master
-set acc_calibration = -15,7,20,1
-set blackbox_device = SERIAL
-set failsafe_off_delay = 30
-set failsafe_throttle = 1200
-set failsafe_throttle_low_delay = 50
-set failsafe_procedure = AUTO-LAND
-set vbat_max_cell_voltage = 440
+set gyro_lpf1_static_hz = 200
+set gyro_lpf2_static_hz = 250
+set dyn_notch_q = 500
+set dyn_notch_min_hz = 150
+set gyro_lpf1_dyn_min_hz = 200
+set gyro_lpf1_dyn_max_hz = 550
+set acc_lpf_hz = 10
+set acc_trim_pitch = 1
+set acc_calibration = 1,-38,27,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
+set serialrx_provider = SPEK1024
+set blackbox_sample_rate = 1/2
+set dshot_idle_value = 800
+set dshot_bidir = ON
+set dshot_bitbang = AUTO
+set motor_poles = 12
+set failsafe_off_delay = 25
+set failsafe_recovery_delay = 20
+set vbat_max_cell_voltage = 450
+set ibata_scale = 470
 set yaw_motors_reversed = ON
-set small_angle = 90
-set osd_warn_bitmask = 34749
-set osd_cap_alarm = 450
-set osd_tim1 = 0
-set osd_tim2 = 2
-set osd_vbat_pos = 14728
-set osd_rssi_pos = 2427
-set osd_rssi_dbm_pos = 2422
-set osd_tim_1_pos = 2408
-set osd_tim_2_pos = 2415
-set osd_remaining_time_estimate_pos = 2401
-set osd_flymode_pos = 2447
-set osd_crosshairs_pos = 2254
-set osd_ah_pos = 111
-set osd_altitude_pos = 55
-set osd_pidrate_profile_pos = 310
-set osd_warnings_pos = 14506
-set osd_avg_cell_voltage_pos = 2433
-set osd_battery_usage_pos = 359
-set osd_disarmed_pos = 2081
-set osd_rate_profile_name_pos = 2453
-set osd_pid_profile_name_pos = 278
-set osd_stat_bitmask = 1881175726
+set small_angle = 180
+set deadband = 1
+set yaw_deadband = 1
+set pid_process_denom = 4
+set simplified_gyro_filter = OFF
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 400
+set osd_tim1 = 2562
+set osd_tim2 = 1539
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2424
+set osd_rssi_dbm_pos = 2392
+set osd_tim_2_pos = 2433
+set osd_flymode_pos = 2440
+set osd_throttle_pos = 377
+set osd_vtx_channel_pos = 2453
+set osd_crosshairs_pos = 2253
+set osd_ah_pos = 2126
+set osd_current_pos = 288
+set osd_mah_drawn_pos = 2368
+set osd_craft_name_pos = 394
+set osd_warnings_pos = 2345
+set osd_avg_cell_voltage_pos = 2401
+set osd_disarmed_pos = 2314
+set osd_esc_rpm_pos = 161
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2106
+set osd_rate_profile_name_pos = 2445
+set osd_stat_bitmask = 8402604
 set osd_canvas_height = 13
 set vtx_band = 5
-set vtx_channel = 1
-set vtx_power = 3
-set vtx_low_power_disarm = UNTIL_FIRST_ARM
-set vtx_freq = 5658
+set vtx_channel = 8
+set vtx_power = 5
+set vtx_low_power_disarm = ON
+set vtx_freq = 5917
 set vcd_video_system = NTSC
+set pinio_box = 255,255,255,255
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
 set expresslrs_switch_mode = HYBRID
@@ -111,9 +142,45 @@ set pilot_name = Misza
 profile 0
 
 # profile 0
+set dterm_lpf1_dyn_min_hz = 60
+set dterm_lpf1_dyn_max_hz = 145
+set dterm_lpf1_static_hz = 150
+set dterm_lpf2_static_hz = 128
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 25
+set yaw_lowpass_hz = 0
+set p_pitch = 56
+set i_pitch = 100
+set d_pitch = 52
+set f_pitch = 149
+set p_roll = 53
+set i_roll = 95
+set d_roll = 46
+set f_roll = 143
+set p_yaw = 53
+set i_yaw = 95
+set f_yaw = 143
+set d_min_roll = 43
+set d_min_pitch = 48
+set d_max_advance = 0
 set launch_control_mode = PITCHONLY
 set launch_trigger_throttle_percent = 50
-set launch_angle_limit = 50
+set launch_angle_limit = 75
+set thrust_linear = 20
+set feedforward_jitter_factor = 5
+set feedforward_boost = 18
+set feedforward_max_rate_limit = 95
+set simplified_pids_mode = OFF
+set simplified_master_multiplier = 120
+set simplified_i_gain = 65
+set simplified_d_gain = 120
+set simplified_pi_gain = 190
+set simplified_dmax_gain = 20
+set simplified_feedforward_gain = 130
+set simplified_pitch_d_gain = 85
+set simplified_pitch_pi_gain = 90
+set tpa_mode = PD
+set tpa_breakpoint = 1250
 
 profile 1
 
