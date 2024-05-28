@@ -152,7 +152,7 @@ set d_min_pitch = 48
 set d_max_advance = 0
 set launch_control_mode = PITCHONLY
 set launch_trigger_throttle_percent = 50
-set launch_angle_limit = 50
+set launch_angle_limit = 75
 set thrust_linear = 20
 set feedforward_jitter_factor = 5
 set feedforward_boost = 18
@@ -223,6 +223,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
