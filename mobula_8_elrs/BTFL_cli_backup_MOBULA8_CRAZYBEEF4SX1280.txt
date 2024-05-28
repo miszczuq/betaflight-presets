@@ -27,6 +27,8 @@ dma ADC 1 1
 
 # feature
 feature -AIRMODE
+feature TELEMETRY
+feature RSSI_ADC
 feature OSD
 
 # serial
