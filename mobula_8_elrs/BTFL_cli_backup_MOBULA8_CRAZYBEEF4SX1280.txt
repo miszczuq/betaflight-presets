@@ -99,19 +99,20 @@ set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
 set osd_cap_alarm = 400
-set osd_tim1 = 2562
-set osd_tim2 = 1539
+set osd_tim1 = 1537
+set osd_tim2 = 2562
 set osd_rssi_pos = 312
-set osd_link_quality_pos = 2424
+set osd_link_quality_pos = 2423
 set osd_rssi_dbm_pos = 2391
-set osd_tim_2_pos = 2433
+set osd_tim_1_pos = 2433
+set osd_tim_2_pos = 359
 set osd_flymode_pos = 2440
 set osd_throttle_pos = 377
 set osd_vtx_channel_pos = 2452
 set osd_crosshairs_pos = 2253
 set osd_ah_pos = 2126
 set osd_current_pos = 288
-set osd_mah_drawn_pos = 2368
+set osd_mah_drawn_pos = 2369
 set osd_craft_name_pos = 394
 set osd_warnings_pos = 2345
 set osd_avg_cell_voltage_pos = 2401
@@ -232,6 +233,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
