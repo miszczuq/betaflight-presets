@@ -174,6 +174,7 @@ set simplified_dmax_gain = 20
 set simplified_feedforward_gain = 130
 set simplified_pitch_d_gain = 85
 set simplified_pitch_pi_gain = 90
+set simplified_dterm_filter = OFF
 set tpa_mode = PD
 set tpa_breakpoint = 1250
 
@@ -193,17 +194,20 @@ set rateprofile_name = Slow
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
 set yaw_rc_rate = 15
-set roll_srate = 30
-set pitch_srate = 30
-set yaw_srate = 30
+set roll_srate = 35
+set pitch_srate = 35
+set yaw_srate = 35
 
 rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Mid
-set roll_rc_rate = 20
-set pitch_rc_rate = 20
-set yaw_rc_rate = 20
+set roll_rc_rate = 8
+set pitch_rc_rate = 8
+set yaw_rc_rate = 8
+set roll_expo = 10
+set pitch_expo = 10
+set yaw_expo = 10
 set roll_srate = 60
 set pitch_srate = 60
 set yaw_srate = 60
@@ -212,12 +216,15 @@ rateprofile 2
 
 # rateprofile 2
 set rateprofile_name = Fast
-set roll_rc_rate = 20
-set pitch_rc_rate = 20
-set yaw_rc_rate = 20
-set roll_srate = 100
-set pitch_srate = 100
-set yaw_srate = 100
+set roll_rc_rate = 10
+set pitch_rc_rate = 10
+set yaw_rc_rate = 10
+set roll_expo = 15
+set pitch_expo = 15
+set yaw_expo = 15
+set roll_srate = 95
+set pitch_srate = 95
+set yaw_srate = 95
 
 rateprofile 3
 
@@ -231,6 +238,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 2
 
 # save configuration
