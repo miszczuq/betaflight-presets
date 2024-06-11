@@ -81,7 +81,7 @@ set rc_smoothing_auto_factor = 25
 set rc_smoothing_auto_factor_throttle = 25
 set serialrx_provider = SPEK1024
 set blackbox_sample_rate = 1/2
-set dshot_idle_value = 1000
+set dshot_idle_value = 800
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_poles = 12
@@ -89,7 +89,6 @@ set failsafe_off_delay = 25
 set failsafe_recovery_delay = 20
 set vbat_max_cell_voltage = 450
 set ibata_scale = 470
-set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
@@ -240,6 +239,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
