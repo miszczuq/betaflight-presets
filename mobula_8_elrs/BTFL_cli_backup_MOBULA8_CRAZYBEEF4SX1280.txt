@@ -34,9 +34,14 @@ serial 0 0 115200 57600 0 2000000
 serial 1 2048 115200 57600 0 115200
 
 # beeper
+beeper -GYRO_CALIBRATED
+beeper -DISARMING
 beeper -ARMING_GPS_FIX
+beeper -BAT_LOW
 beeper -GPS_STATUS
 beeper -RX_SET
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
 beeper -READY_BEEP
 beeper -DISARM_REPEAT
 beeper -ARMED
@@ -100,7 +105,9 @@ set dshot_bitbang = AUTO
 set motor_poles = 12
 set failsafe_off_delay = 25
 set failsafe_recovery_delay = 20
+set bat_capacity = 450
 set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
 set ibata_scale = 470
 set small_angle = 180
 set deadband = 1
@@ -252,6 +259,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
