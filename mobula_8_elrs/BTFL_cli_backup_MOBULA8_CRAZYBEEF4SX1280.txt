@@ -33,6 +33,19 @@ feature OSD
 serial 0 0 115200 57600 0 2000000
 serial 1 2048 115200 57600 0 115200
 
+# beeper
+beeper -ARMING_GPS_FIX
+beeper -GPS_STATUS
+beeper -RX_SET
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
+
 # beacon
 beacon RX_LOST
 beacon RX_SET
@@ -239,6 +252,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 2
 
 # save configuration
