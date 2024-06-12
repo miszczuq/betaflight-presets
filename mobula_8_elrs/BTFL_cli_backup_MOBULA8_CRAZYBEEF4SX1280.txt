@@ -39,7 +39,6 @@ beeper -DISARMING
 beeper -ARMING_GPS_FIX
 beeper -BAT_LOW
 beeper -GPS_STATUS
-beeper -RX_SET
 beeper -ACC_CALIBRATION
 beeper -ACC_CALIBRATION_FAIL
 beeper -READY_BEEP
@@ -259,6 +258,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
