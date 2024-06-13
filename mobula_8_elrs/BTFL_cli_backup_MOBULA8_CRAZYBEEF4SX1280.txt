@@ -37,6 +37,7 @@ serial 1 2048 115200 57600 0 115200
 beeper -GYRO_CALIBRATED
 beeper -DISARMING
 beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
 beeper -BAT_LOW
 beeper -GPS_STATUS
 beeper -ACC_CALIBRATION
@@ -108,6 +109,7 @@ set bat_capacity = 450
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set ibata_scale = 470
+set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 1
 set yaw_deadband = 1
@@ -143,7 +145,7 @@ set osd_stat_bitmask = 10499756
 set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 5
+set vtx_power = 3
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
