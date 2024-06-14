@@ -145,7 +145,7 @@ set osd_stat_bitmask = 10499756
 set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 3
+set vtx_power = 5
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
@@ -223,13 +223,13 @@ set yaw_srate = 35
 rateprofile 1
 
 # rateprofile 1
-set rateprofile_name = Mid
-set roll_rc_rate = 8
-set pitch_rc_rate = 8
-set yaw_rc_rate = 8
-set roll_expo = 10
-set pitch_expo = 10
-set yaw_expo = 10
+set rateprofile_name = Normal
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 15
+set roll_expo = 40
+set pitch_expo = 40
+set yaw_expo = 40
 set roll_srate = 60
 set pitch_srate = 60
 set yaw_srate = 60
@@ -237,21 +237,21 @@ set yaw_srate = 60
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = Fast
-set roll_rc_rate = 10
-set pitch_rc_rate = 10
-set yaw_rc_rate = 10
-set roll_expo = 15
-set pitch_expo = 15
-set yaw_expo = 15
-set roll_srate = 95
-set pitch_srate = 95
-set yaw_srate = 95
+set rateprofile_name = Freestyl
+set roll_rc_rate = 14
+set pitch_rc_rate = 14
+set yaw_rc_rate = 14
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 90
 
 rateprofile 3
 
 # rateprofile 3
-set rateprofile_name = Freestyl
+set rateprofile_name = Linear
 set roll_rc_rate = 10
 set pitch_rc_rate = 10
 set yaw_rc_rate = 10
@@ -260,6 +260,6 @@ set pitch_srate = 70
 set yaw_srate = 70
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
