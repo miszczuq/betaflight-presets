@@ -131,8 +131,8 @@ set osd_throttle_pos = 2081
 set osd_vtx_channel_pos = 2453
 set osd_crosshairs_pos = 2253
 set osd_ah_pos = 2126
-set osd_current_pos = 288
-set osd_mah_drawn_pos = 2369
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2370
 set osd_craft_name_pos = 394
 set osd_warnings_pos = 2345
 set osd_avg_cell_voltage_pos = 2401
@@ -145,7 +145,7 @@ set osd_stat_bitmask = 813696742
 set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 3
+set vtx_power = 5
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
@@ -260,6 +260,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
