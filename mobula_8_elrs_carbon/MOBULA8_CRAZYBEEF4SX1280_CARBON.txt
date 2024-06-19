@@ -71,8 +71,6 @@ aux 8 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
-adjrange 1 0 3 900 1500 12 3 0 0
-adjrange 2 0 1 1800 2100 12 1 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -181,40 +179,51 @@ set pilot_name = Misza
 profile 0
 
 # profile 0
-set dterm_lpf1_dyn_min_hz = 108
-set dterm_lpf1_dyn_max_hz = 217
-set dterm_lpf1_static_hz = 0
-set dterm_lpf2_static_hz = 217
+set dterm_lpf1_dyn_min_hz = 60
+set dterm_lpf1_dyn_max_hz = 145
+set dterm_lpf1_static_hz = 150
+set dterm_lpf2_static_hz = 128
 set vbat_sag_compensation = 100
 set anti_gravity_gain = 90
-set iterm_relax_cutoff = 5
+set iterm_relax_cutoff = 25
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
-set yaw_lowpass_hz = 125
-set p_pitch = 62
-set i_pitch = 72
-set d_pitch = 49
-set f_pitch = 187
-set p_roll = 52
-set i_roll = 60
-set d_roll = 43
-set f_roll = 156
-set p_yaw = 52
-set i_yaw = 60
-set f_yaw = 156
+set yaw_lowpass_hz = 0
+set p_pitch = 56
+set i_pitch = 100
+set d_pitch = 52
+set f_pitch = 149
+set p_roll = 53
+set i_roll = 95
+set d_roll = 46
+set f_roll = 143
+set p_yaw = 53
+set i_yaw = 95
+set f_yaw = 143
 set d_min_roll = 43
-set d_min_pitch = 49
+set d_min_pitch = 48
+set d_max_advance = 0
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 50
+set launch_angle_limit = 75
 set thrust_linear = 20
 set feedforward_jitter_factor = 5
 set feedforward_boost = 18
+set feedforward_max_rate_limit = 95
 set dyn_idle_min_rpm = 70
-set simplified_master_multiplier = 145
+set simplified_pids_mode = OFF
+set simplified_master_multiplier = 120
 set simplified_i_gain = 65
-set simplified_pi_gain = 80
-set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 90
-set simplified_pitch_pi_gain = 115
+set simplified_d_gain = 120
+set simplified_pi_gain = 190
+set simplified_dmax_gain = 20
+set simplified_feedforward_gain = 130
+set simplified_pitch_d_gain = 85
+set simplified_pitch_pi_gain = 90
+set simplified_dterm_filter = OFF
 set simplified_dterm_filter_multiplier = 145
+set tpa_mode = PD
+set tpa_breakpoint = 1250
 
 profile 1
 
@@ -231,13 +240,9 @@ rateprofile 0
 set rateprofile_name = Slow
 set thr_mid = 35
 set thr_expo = 64
-set rates_type = BETAFLIGHT
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
 set yaw_rc_rate = 15
-set roll_expo = 50
-set pitch_expo = 50
-set yaw_expo = 50
 set roll_srate = 35
 set pitch_srate = 35
 set yaw_srate = 35
@@ -260,7 +265,6 @@ rateprofile 2
 
 # rateprofile 2
 set rateprofile_name = Tricks
-set rates_type = BETAFLIGHT
 set roll_rc_rate = 14
 set pitch_rc_rate = 14
 set yaw_rc_rate = 14
