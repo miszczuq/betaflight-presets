@@ -16,7 +16,7 @@ manufacturer_id HAMO
 mcu_id 004400503133510130323638
 signature 
 
-# name: Mobula8
+# name: Mobula
 
 # resources
 resource LED 1 NONE
@@ -153,7 +153,7 @@ set pinio_box = 255,255,255,255
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
 set expresslrs_switch_mode = HYBRID
-set craft_name = Mobula8
+set craft_name = Mobula
 set pilot_name = Misza
 
 profile 0
