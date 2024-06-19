@@ -17,7 +17,7 @@ manufacturer_id HAMO
 mcu_id 005600263132510a30313538
 signature 
 
-# name: Mobula8_carbon
+# name: Carbon
 
 # resources
 resource LED_STRIP 1 NONE
@@ -164,7 +164,7 @@ set osd_canvas_height = 13
 set debug_mode = DUAL_GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 4
+set vtx_power = 5
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
@@ -173,7 +173,7 @@ set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
 set expresslrs_switch_mode = HYBRID
 set rpm_filter_min_hz = 200
-set craft_name = Mobula8_carbon
+set craft_name = Carbon
 set pilot_name = Misza
 
 profile 0
@@ -287,6 +287,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
