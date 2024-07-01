@@ -34,7 +34,6 @@ serial 0 0 115200 57600 0 2000000
 serial 1 2048 115200 57600 0 115200
 
 # beeper
-beeper -GYRO_CALIBRATED
 beeper -DISARMING
 beeper -ARMING_GPS_FIX
 beeper -BAT_CRIT_LOW
@@ -145,7 +144,7 @@ set osd_stat_bitmask = 813696742
 set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 5
+set vtx_power = 4
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
