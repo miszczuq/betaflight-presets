@@ -183,6 +183,7 @@ set dterm_lpf1_dyn_max_hz = 145
 set dterm_lpf1_static_hz = 150
 set dterm_lpf2_static_hz = 128
 set vbat_sag_compensation = 100
+set pid_at_min_throttle = OFF
 set anti_gravity_gain = 90
 set iterm_relax_cutoff = 25
 set pidsum_limit = 1000
