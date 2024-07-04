@@ -89,6 +89,9 @@ vtx 0 1 0 0 3 900 1200
 vtx 1 1 0 0 4 1200 1800
 vtx 2 1 0 0 5 1800 2100
 
+# rxfail
+rxfail 5 s 1000
+
 # master
 set dyn_notch_q = 500
 set dyn_notch_min_hz = 150
@@ -106,6 +109,10 @@ set dshot_bitbang = AUTO
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set failsafe_delay = 4
+set failsafe_off_delay = 30
+set failsafe_throttle = 1300
+set failsafe_throttle_low_delay = 40
+set failsafe_procedure = AUTO-LAND
 set failsafe_recovery_delay = 20
 set bat_capacity = 450
 set vbat_max_cell_voltage = 450
@@ -163,7 +170,7 @@ set osd_canvas_height = 13
 set debug_mode = DUAL_GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 4
+set vtx_power = 3
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
