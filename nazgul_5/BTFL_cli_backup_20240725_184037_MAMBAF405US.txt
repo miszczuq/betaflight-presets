@@ -1,9 +1,10 @@
 defaults nosave
 
+# diff all
 
 # version
-# Betaflight / STM32F405 (S405) 4.2.11 Nov  9 2021 / 20:27:49 (948ba6339) MSP API: 1.43
-# config: manufacturer_id: DIAT, board_name: MAMBAF405US, version: ec268d11, date: 2021-07-26T13:10:45Z
+# Betaflight / STM32F405 (S405) 4.5.1 Jul 27 2024 / 17:41:13 (77d01ba3b) MSP API: 1.46
+# config rev: 6440ad8
 
 # start the command batch
 batch start
@@ -17,90 +18,44 @@ mcu_id 004100354e4d501320373348
 signature 
 
 # feature
-feature -SOFTSERIAL
 feature TELEMETRY
+feature LED_STRIP
+feature OSD
 
 # serial
-serial 0 0 115200 57600 0 115200
 serial 2 2048 115200 57600 0 115200
 serial 3 0 19200 57600 0 115200
 serial 4 64 115200 57600 0 115200
 
-# aux
-aux 0 0 0 1600 2100 0 0
-aux 1 13 1 1575 2100 0 0
-aux 2 35 2 1600 2100 0 0
-
-# vtxtable
-vtxtable bands 5
-vtxtable channels 8
-vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
-vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
-vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665    0 5885 5905 5925    0
-vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
-vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
-vtxtable powerlevels 4
-vtxtable powervalues 14 23 27 29
-vtxtable powerlabels 25 200 500 800
-
 # master
-set acc_calibration = -28,-3,131,1
-set mag_hardware = NONE
-set baro_hardware = NONE
-set serialrx_provider = CRSF
-set dshot_idle_value = 700
-set vbat_max_cell_voltage = 420
-set ibata_scale = 100
-set pid_process_denom = 2
-set osd_vbat_pos = 2454
-set osd_rssi_pos = 2371
-set osd_link_quality_pos = 2435
-set osd_rssi_dbm_pos = 2403
-set osd_warnings_pos = 14539
-set osd_avg_cell_voltage_pos = 2422
-set vtx_band = 5
-set vtx_channel = 8
-set vtx_power = 4
-set vtx_low_power_disarm = UNTIL_FIRST_ARM
-set vtx_freq = 5917
+set acc_calibration = -2,0,194,1
+set rc_smoothing_auto_factor = 52
+set report_cell_voltage = ON
+set osd_canvas_height = 13
 
 profile 0
 
 # profile 0
-set p_pitch = 51
-set p_roll = 44
-set i_roll = 90
-set p_yaw = 50
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 8
 
 profile 1
 
 profile 2
+
+profile 3
 
 # restore original profile selection
 profile 0
 
 rateprofile 0
 
-# rateprofile 0
-set roll_rc_rate = 140
-set pitch_rc_rate = 140
-set yaw_rc_rate = 105
-set roll_expo = 54
-set pitch_expo = 54
-set yaw_expo = 29
-set roll_srate = 75
-set pitch_srate = 75
-set yaw_srate = 80
-
 rateprofile 1
 
 rateprofile 2
 
 rateprofile 3
-
-rateprofile 4
-
-rateprofile 5
 
 # restore original rateprofile selection
 rateprofile 0
