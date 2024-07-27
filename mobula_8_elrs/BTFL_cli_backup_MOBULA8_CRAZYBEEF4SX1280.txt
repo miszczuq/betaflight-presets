@@ -60,7 +60,7 @@ aux 1 1 1 900 1275 0 0
 aux 2 13 0 1700 2100 1 0
 aux 3 13 2 1300 1700 1 0
 aux 4 28 1 1700 2100 0 0
-aux 5 28 255 900 1300 0 0
+aux 5 28 1 900 1300 0 0
 aux 6 35 0 1700 2100 1 0
 aux 7 35 2 1700 2100 1 0
 aux 8 49 0 1700 2100 1 0
@@ -261,6 +261,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
