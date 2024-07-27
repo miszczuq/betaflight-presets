@@ -85,6 +85,7 @@ set acc_calibration = 11,69,-24,1
 set fpv_mix_degrees = 15
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
+set yaw_motors_reversed = ON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
