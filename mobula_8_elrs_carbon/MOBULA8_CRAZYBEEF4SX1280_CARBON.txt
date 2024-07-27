@@ -63,7 +63,7 @@ aux 1 1 1 900 1275 0 0
 aux 2 13 0 1700 2100 1 0
 aux 3 13 2 1300 1700 1 0
 aux 4 28 1 1700 2100 0 0
-aux 5 28 255 900 1300 0 0
+aux 5 28 1 900 1300 0 0
 aux 6 35 0 1700 2100 1 0
 aux 7 35 2 1700 2100 1 0
 aux 8 49 0 1700 2100 1 0
@@ -84,11 +84,6 @@ vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
 vtxtable powerlevels 5
 vtxtable powervalues 10 2 14 20 26
 vtxtable powerlabels 0 RCE 25 100 400
-
-# vtx
-vtx 0 1 0 0 3 900 1200
-vtx 1 1 0 0 4 1200 1800
-vtx 2 1 0 0 5 1800 2100
 
 # rxfail
 rxfail 5 s 1000
@@ -171,7 +166,7 @@ set osd_canvas_height = 13
 set debug_mode = DUAL_GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 3
+set vtx_power = 4
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
