@@ -66,16 +66,15 @@ aux 9 49 2 900 1300 1 0
 adjrange 0 0 2 900 2100 12 2 0 0
 
 # vtxtable
-vtxtable bands 6
+vtxtable bands 5
 vtxtable channels 8
-vtxtable band 1 BAND_A   A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
-vtxtable band 2 BAND_B   B FACTORY 5733 5752 5771 5790 5999 5828 5847 5866
-vtxtable band 3 BAND_E   E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
-vtxtable band 4 AIRWAVE  F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665    0 5885 5905 5925    0
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
 vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
-vtxtable band 6 LOWRACE  L CUSTOM  5362 5399 5436 5473 5510 5547 5584 5621
 vtxtable powerlevels 4
-vtxtable powervalues 0 1 2 3
+vtxtable powervalues 14 23 27 29
 vtxtable powerlabels 25 200 500 800
 
 # rxfail
@@ -97,27 +96,27 @@ set osd_tim1 = 1
 set osd_tim2 = 2
 set osd_vbat_pos = 341
 set osd_rssi_pos = 312
-set osd_link_quality_pos = 2423
+set osd_link_quality_pos = 2487
 set osd_link_tx_power_pos = 341
-set osd_rssi_dbm_pos = 2391
+set osd_rssi_dbm_pos = 2455
 set osd_rsnr_pos = 341
-set osd_tim_1_pos = 2433
+set osd_tim_1_pos = 2497
 set osd_tim_2_pos = 139
 set osd_remaining_time_estimate_pos = 341
-set osd_flymode_pos = 2440
+set osd_flymode_pos = 2504
 set osd_anti_gravity_pos = 341
 set osd_g_force_pos = 341
 set osd_throttle_pos = 2081
-set osd_vtx_channel_pos = 2453
-set osd_crosshairs_pos = 2253
+set osd_vtx_channel_pos = 2516
+set osd_crosshairs_pos = 2285
 set osd_ah_sbar_pos = 313
-set osd_ah_pos = 2126
-set osd_current_pos = 2336
-set osd_mah_drawn_pos = 2369
+set osd_ah_pos = 2158
+set osd_current_pos = 2401
+set osd_mah_drawn_pos = 2433
 set osd_wh_drawn_pos = 341
 set osd_motor_diag_pos = 341
-set osd_craft_name_pos = 394
-set osd_pilot_name_pos = 341
+set osd_craft_name_pos = 2091
+set osd_pilot_name_pos = 2124
 set osd_gps_speed_pos = 341
 set osd_gps_lon_pos = 341
 set osd_gps_lat_pos = 341
@@ -133,12 +132,12 @@ set osd_pid_yaw_pos = 341
 set osd_debug_pos = 341
 set osd_power_pos = 341
 set osd_pidrate_profile_pos = 341
-set osd_warnings_pos = 2345
-set osd_avg_cell_voltage_pos = 2401
+set osd_warnings_pos = 2313
+set osd_avg_cell_voltage_pos = 2465
 set osd_pit_ang_pos = 341
 set osd_rol_ang_pos = 341
 set osd_battery_usage_pos = 341
-set osd_disarmed_pos = 2314
+set osd_disarmed_pos = 2346
 set osd_nheading_pos = 341
 set osd_up_down_reference_pos = 312
 set osd_ready_mode_pos = 341
@@ -152,7 +151,7 @@ set osd_core_temp_pos = 280
 set osd_log_status_pos = 2105
 set osd_stick_overlay_left_pos = 341
 set osd_stick_overlay_right_pos = 341
-set osd_rate_profile_name_pos = 2445
+set osd_rate_profile_name_pos = 2509
 set osd_pid_profile_name_pos = 341
 set osd_profile_name_pos = 341
 set osd_rcchannels_pos = 341
@@ -172,13 +171,12 @@ set osd_sys_warnings_pos = 341
 set osd_sys_vtx_temp_pos = 341
 set osd_sys_fan_speed_pos = 341
 set osd_stat_bitmask = 813696742
-set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 4
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
-set vcd_video_system = NTSC
+set vcd_video_system = PAL
 set craft_name = Nazgul5
 set pilot_name = Misza
 
