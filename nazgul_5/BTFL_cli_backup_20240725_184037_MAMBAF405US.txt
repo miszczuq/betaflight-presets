@@ -25,7 +25,7 @@ feature LED_STRIP
 feature OSD
 
 # serial
-serial 2 2048 115200 57600 0 115200
+serial 2 8192 115200 57600 0 115200
 serial 3 0 19200 57600 0 115200
 serial 4 64 115200 57600 0 115200
 
@@ -249,6 +249,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
