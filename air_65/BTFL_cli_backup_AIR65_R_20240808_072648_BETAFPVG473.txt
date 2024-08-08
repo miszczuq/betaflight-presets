@@ -21,16 +21,40 @@ signature
 # feature
 feature OSD
 
+# beeper
+beeper -DISARMING
+beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
+beeper -BAT_LOW
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
+
 # beacon
 beacon RX_LOST
 beacon RX_SET
 
 # aux
-aux 0 0 0 1700 2100 0 0
-aux 1 1 1 900 1300 0 0
-aux 2 2 1 1300 1700 0 0
-aux 3 13 3 1700 2100 0 0
-aux 4 35 2 1700 2100 0 0
+aux 0 0 3 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 28 1 1700 2100 0 0
+aux 5 35 0 1700 2100 1 0
+aux 6 35 2 1700 2100 1 0
+aux 7 49 0 1700 2100 1 0
+aux 8 49 2 900 1300 1 0
+
+# adjrange
+adjrange 0 0 2 900 2100 12 2 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -58,46 +82,50 @@ set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
-set vbat_max_cell_voltage = 440
-set vbat_warning_cell_voltage = 345
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 300
+set vbat_warning_cell_voltage = 320
 set ibata_offset = -600
 set yaw_motors_reversed = ON
 set small_angle = 180
 set pid_process_denom = 2
-set osd_rssi_dbm_alarm = -99
-set osd_vbat_pos = 2369
-set osd_rssi_pos = 226
-set osd_link_quality_pos = 2337
-set osd_rssi_dbm_pos = 2305
-set osd_tim_1_pos = 386
-set osd_tim_2_pos = 2454
-set osd_remaining_time_estimate_pos = 33
-set osd_flymode_pos = 2422
-set osd_throttle_pos = 2390
-set osd_vtx_channel_pos = 2081
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 450
+set osd_tim1 = 1
+set osd_tim2 = 2
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2423
+set osd_rssi_dbm_pos = 2391
+set osd_tim_1_pos = 2433
+set osd_tim_2_pos = 139
+set osd_flymode_pos = 2440
+set osd_throttle_pos = 2081
+set osd_vtx_channel_pos = 2453
 set osd_crosshairs_pos = 2253
-set osd_current_pos = 2400
-set osd_mah_drawn_pos = 2434
-set osd_craft_name_pos = 2443
-set osd_home_dist_pos = 98
-set osd_flight_dist_pos = 130
-set osd_warnings_pos = 2378
-set osd_avg_cell_voltage_pos = 44
-set osd_pit_ang_pos = 97
-set osd_rol_ang_pos = 65
-set osd_disarmed_pos = 267
-set osd_esc_tmp_pos = 163
-set osd_esc_rpm_pos = 150
-set osd_core_temp_pos = 278
+set osd_ah_pos = 2126
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2369
+set osd_craft_name_pos = 394
+set osd_warnings_pos = 2345
+set osd_avg_cell_voltage_pos = 2401
+set osd_disarmed_pos = 2314
+set osd_esc_rpm_pos = 161
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2105
+set osd_rate_profile_name_pos = 2445
+set osd_stat_bitmask = 813696742
 set osd_displayport_device = AUTO
 set osd_canvas_width = 30
 set osd_canvas_height = 13
 set debug_mode = GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 1
+set vtx_power = 2
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
-set vcd_video_system = AUTO
+set vcd_video_system = NTSC
 set craft_name = AIR65 R
 
 profile 0
@@ -178,6 +206,6 @@ rateprofile 2
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 3
 
 # save configuration
