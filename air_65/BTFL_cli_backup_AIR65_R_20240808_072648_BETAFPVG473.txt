@@ -79,17 +79,21 @@ set dyn_notch_max_hz = 500
 set gyro_lpf1_dyn_min_hz = 0
 set acc_calibration = -44,-10,-41,1
 set baro_hardware = NONE
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
+set dshot_idle_value = 800
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 300
-set vbat_warning_cell_voltage = 320
+set vbat_min_cell_voltage = 320
+set vbat_warning_cell_voltage = 335
 set ibata_offset = -600
 set yaw_motors_reversed = ON
 set small_angle = 180
 set pid_process_denom = 2
+set report_cell_voltage = ON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
@@ -106,7 +110,7 @@ set osd_throttle_pos = 2081
 set osd_vtx_channel_pos = 2453
 set osd_crosshairs_pos = 2253
 set osd_ah_pos = 2126
-set osd_current_pos = 2336
+set osd_current_pos = 288
 set osd_mah_drawn_pos = 2369
 set osd_craft_name_pos = 394
 set osd_warnings_pos = 2345
@@ -123,7 +127,7 @@ set osd_canvas_height = 13
 set debug_mode = GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 2
+set vtx_power = 1
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
 set vcd_video_system = NTSC
@@ -134,6 +138,9 @@ profile 0
 
 # profile 0
 set profile_name = 1219S
+set vbat_sag_compensation = 100
+set crash_recovery = ON
+set throttle_boost = 8
 set p_pitch = 71
 set i_pitch = 101
 set d_pitch = 60
@@ -145,13 +152,15 @@ set f_roll = 0
 set p_yaw = 61
 set i_yaw = 87
 set f_yaw = 0
-set angle_p_gain = 100
+set angle_p_gain = 90
+set angle_limit = 65
 set d_min_roll = 41
 set d_min_pitch = 56
 set d_max_gain = 20
 set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
-set feedforward_jitter_factor = 5
+set feedforward_smooth_factor = 35
+set feedforward_jitter_factor = 4
+set feedforward_boost = 18
 set simplified_master_multiplier = 125
 set simplified_i_gain = 80
 set simplified_d_gain = 110
@@ -209,6 +218,7 @@ set yaw_rc_rate = 15
 set roll_srate = 35
 set pitch_srate = 35
 set yaw_srate = 35
+set throttle_limit_percent = 90
 
 rateprofile 1
 
@@ -227,16 +237,16 @@ set yaw_srate = 60
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = Tricks
-set roll_rc_rate = 14
-set pitch_rc_rate = 14
-set yaw_rc_rate = 14
-set roll_expo = 50
-set pitch_expo = 50
-set yaw_expo = 50
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
+set rateprofile_name = Race533
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
 
 rateprofile 3
 
