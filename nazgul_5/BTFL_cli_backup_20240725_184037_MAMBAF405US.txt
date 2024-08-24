@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F405 (S405) 4.5.1 Jul 27 2024 / 17:41:13 (77d01ba3b) MSP API: 1.46
-# config rev: 6440ad8
+# Betaflight / STM32F405 (S405) 4.5.1 Aug 24 2024 / 15:27:43 (77d01ba3b) MSP API: 1.46
+# config rev: e3a2cf9
 
 # start the command batch
 batch start
@@ -20,13 +20,14 @@ signature
 
 # feature
 feature -AIRMODE
+feature GPS
 feature TELEMETRY
 feature LED_STRIP
 feature OSD
 
 # serial
 serial 2 8192 115200 57600 0 115200
-serial 3 0 19200 57600 0 115200
+serial 3 2 115200 115200 0 115200
 serial 4 64 115200 57600 0 115200
 
 # beeper
@@ -48,22 +49,24 @@ beeper -RC_SMOOTHING_INIT_FAIL
 
 # beacon
 beacon RX_LOST
-beacon RX_SET
 
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 13 0 1700 2100 1 0
-aux 3 13 2 1300 1700 1 0
-aux 4 28 1 1700 2100 0 0
-aux 5 28 1 900 1300 0 0
-aux 6 35 0 1700 2100 1 0
-aux 7 35 2 1700 2100 1 0
-aux 8 49 0 1700 2100 1 0
-aux 9 49 2 900 1300 1 0
+aux 2 27 6 1700 2100 0 0
+aux 3 46 4 1700 2100 0 0
+aux 4 13 0 1700 2100 1 0
+aux 5 13 2 1300 1700 1 0
+aux 6 28 1 1700 2100 0 0
+aux 7 28 1 900 1300 0 0
+aux 8 35 0 1700 2100 1 0
+aux 9 35 2 1700 2100 1 0
+aux 10 49 0 1700 2100 1 0
+aux 11 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
+adjrange 1 0 5 900 2100 29 5 0 0
 
 # vtxtable
 vtxtable bands 5
@@ -78,15 +81,22 @@ vtxtable powervalues 25 200 400 600 600
 vtxtable powerlabels 25 200 400 800 800
 
 # rxfail
+rxfail 4 s 1200
 rxfail 5 s 1000
 
 # master
 set acc_calibration = -2,0,194,1
 set rc_smoothing_auto_factor = 52
 set fpv_mix_degrees = 25
+set failsafe_procedure = GPS-RESCUE
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set ibata_scale = 100
+set gps_sbas_mode = AUTO
+set gps_ublox_use_galileo = ON
+set gps_set_home_point_once = ON
+set gps_rescue_throttle_hover = 1200
+set gps_rescue_allow_arming_without_fix = ON
 set report_cell_voltage = ON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
@@ -117,12 +127,12 @@ set osd_wh_drawn_pos = 341
 set osd_motor_diag_pos = 341
 set osd_craft_name_pos = 2091
 set osd_pilot_name_pos = 2124
-set osd_gps_speed_pos = 341
-set osd_gps_lon_pos = 341
-set osd_gps_lat_pos = 341
-set osd_gps_sats_pos = 341
-set osd_home_dir_pos = 341
-set osd_home_dist_pos = 341
+set osd_gps_speed_pos = 4263
+set osd_gps_lon_pos = 4520
+set osd_gps_lat_pos = 4552
+set osd_gps_sats_pos = 4276
+set osd_home_dir_pos = 4429
+set osd_home_dist_pos = 4461
 set osd_flight_dist_pos = 341
 set osd_compass_bar_pos = 341
 set osd_altitude_pos = 341
@@ -173,7 +183,7 @@ set osd_sys_fan_speed_pos = 341
 set osd_stat_bitmask = 813696742
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 4
+set vtx_power = 3
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
 set vcd_video_system = PAL
@@ -249,6 +259,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
