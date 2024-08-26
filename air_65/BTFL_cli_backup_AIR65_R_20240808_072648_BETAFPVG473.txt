@@ -214,7 +214,6 @@ rateprofile 0
 
 # rateprofile 0
 set rateprofile_name = Race533
-set thr_mid = 100
 set thr_expo = 20
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
@@ -230,7 +229,6 @@ rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Normal
-set thr_mid = 100
 set thr_expo = 20
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
@@ -246,17 +244,14 @@ rateprofile 2
 
 # rateprofile 2
 set rateprofile_name = Linear
-set roll_rc_rate = 40
-set pitch_rc_rate = 40
+set thr_expo = 20
+set roll_rc_rate = 60
+set pitch_rc_rate = 60
 set yaw_rc_rate = 20
-set roll_expo = 10
-set pitch_expo = 10
 set yaw_expo = 35
-set roll_srate = 40
-set pitch_srate = 40
+set roll_srate = 60
+set pitch_srate = 60
 set yaw_srate = 70
-set throttle_limit_type = SCALE
-set throttle_limit_percent = 90
 
 rateprofile 3
 
@@ -270,6 +265,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
