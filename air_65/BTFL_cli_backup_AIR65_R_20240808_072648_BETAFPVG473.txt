@@ -71,6 +71,14 @@ vtxtable powerlevels 5
 vtxtable powervalues 1 2 3 4 0
 vtxtable powerlabels 25 100 200 400 PIT
 
+# vtx
+vtx 0 7 0 0 1 900 1100
+vtx 1 7 0 0 2 1100 1200
+vtx 2 7 0 0 3 1200 1400
+vtx 3 7 0 0 4 1400 1650
+vtx 4 7 0 0 0 1650 1850
+vtx 5 7 0 0 5 1850 2000
+
 # master
 set gyro_lpf1_static_hz = 0
 set gyro_lpf2_static_hz = 1000
@@ -130,7 +138,7 @@ set osd_canvas_height = 13
 set debug_mode = GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 2
+set vtx_power = 1
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
 set vcd_video_system = NTSC
