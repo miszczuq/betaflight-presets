@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F405 (S405) 4.5.1 Aug  6 2024 / 16:37:01 (77d01ba3b) MSP API: 1.46
-# config rev: b952b38
+# Betaflight / STM32F405 (S405) 4.5.1 Sep 15 2024 / 03:58:09 (77d01ba3b) MSP API: 1.46
+# config rev: 0e29fcb
 
 # start the command batch
 batch start
@@ -59,28 +59,36 @@ led 6 12,11::C:2
 led 7 11,10::C:2
 led 8 10,9::C:2
 led 9 9,8::C:2
-led 10 8,7::C:10
-led 11 9,6::C:10
-led 12 10,5::C:10
-led 13 11,4::C:10
-led 14 12,3::C:10
-led 15 13,2::C:10
-led 16 11,3::C:10
-led 17 10,4::C:10
-led 18 9,5::C:10
-led 19 8,6::C:10
-led 20 7,7::C:10
-led 21 6,6::C:10
-led 22 5,5::C:10
-led 23 4,4::C:10
-led 24 3,3::C:10
-led 25 2,2::C:10
-led 26 4,3::C:10
-led 27 5,4::C:10
-led 28 6,5::C:10
-led 29 7,6::C:10
+led 10 8,7::C:1
+led 11 9,6::C:1
+led 12 10,5::C:1
+led 13 11,4::C:1
+led 14 12,3::C:1
+led 15 13,2::C:1
+led 16 11,3::C:1
+led 17 10,4::C:1
+led 18 9,5::C:1
+led 19 8,6::C:1
+led 20 7,7::C:1
+led 21 6,6::C:1
+led 22 5,5::C:1
+led 23 4,4::C:1
+led 24 3,3::C:1
+led 25 2,2::C:1
+led 26 4,3::C:1
+led 27 5,4::C:1
+led 28 6,5::C:1
+led 29 7,6::C:1
 led 30 7,8::C:2
 led 31 6,9::C:2
+led 32 5,10::C:2
+led 33 4,11::C:2
+led 34 3,12::C:2
+led 35 2,13::C:2
+led 36 3,11::C:2
+led 37 4,10::C:2
+led 38 5,9::C:2
+led 39 6,8::C:2
 
 # aux
 aux 0 0 3 1700 2100 0 0
@@ -130,6 +138,8 @@ set gps_set_home_point_once = ON
 set gps_rescue_throttle_hover = 1200
 set gps_rescue_allow_arming_without_fix = ON
 set report_cell_voltage = ON
+set ledstrip_rainbow_delta = 306
+set ledstrip_rainbow_freq = 360
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
