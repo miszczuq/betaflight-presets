@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F405 (S405) 4.5.1 Aug 24 2024 / 15:27:43 (77d01ba3b) MSP API: 1.46
-# config rev: e3a2cf9
+# Betaflight / STM32F405 (S405) 4.5.1 Aug  6 2024 / 16:37:01 (77d01ba3b) MSP API: 1.46
+# config rev: b952b38
 
 # start the command batch
 batch start
@@ -81,14 +81,6 @@ led 28 6,5::C:10
 led 29 7,6::C:10
 led 30 7,8::C:2
 led 31 6,9::C:2
-led 32 5,10::C:2
-led 33 4,11::C:2
-led 34 3,12::C:2
-led 35 2,13::C:2
-led 36 3,11::C:2
-led 37 4,10::C:2
-led 38 5,9::C:2
-led 39 6,8::C:2
 
 # aux
 aux 0 0 3 1700 2100 0 0
@@ -122,7 +114,6 @@ vtxtable powerlabels 25 200 400 800 800
 
 # rxfail
 rxfail 3 s 1200
-rxfail 4 h
 rxfail 5 s 1000
 
 # master
@@ -145,91 +136,54 @@ set osd_rssi_dbm_alarm = -98
 set osd_cap_alarm = 450
 set osd_tim1 = 1
 set osd_tim2 = 2
-set osd_vbat_pos = 341
+set osd_vbat_pos = 8684
 set osd_rssi_pos = 312
-set osd_link_quality_pos = 2487
-set osd_link_tx_power_pos = 341
-set osd_rssi_dbm_pos = 2455
-set osd_rsnr_pos = 341
-set osd_tim_1_pos = 2497
-set osd_tim_2_pos = 139
-set osd_remaining_time_estimate_pos = 341
-set osd_flymode_pos = 2504
-set osd_anti_gravity_pos = 341
-set osd_g_force_pos = 341
-set osd_throttle_pos = 2081
-set osd_vtx_channel_pos = 2516
-set osd_crosshairs_pos = 2285
-set osd_ah_sbar_pos = 313
-set osd_ah_pos = 2158
-set osd_current_pos = 2401
-set osd_mah_drawn_pos = 2433
-set osd_wh_drawn_pos = 341
-set osd_motor_diag_pos = 341
-set osd_craft_name_pos = 2091
-set osd_pilot_name_pos = 2124
-set osd_gps_speed_pos = 4263
-set osd_gps_lon_pos = 4520
-set osd_gps_lat_pos = 4552
-set osd_gps_sats_pos = 4276
-set osd_home_dir_pos = 4429
-set osd_home_dist_pos = 4461
-set osd_flight_dist_pos = 341
-set osd_compass_bar_pos = 341
-set osd_altitude_pos = 341
-set osd_pid_roll_pos = 341
-set osd_pid_pitch_pos = 341
-set osd_pid_yaw_pos = 341
-set osd_debug_pos = 341
-set osd_power_pos = 341
-set osd_pidrate_profile_pos = 341
-set osd_warnings_pos = 2313
-set osd_avg_cell_voltage_pos = 2465
-set osd_pit_ang_pos = 341
-set osd_rol_ang_pos = 341
-set osd_battery_usage_pos = 341
-set osd_disarmed_pos = 2346
-set osd_nheading_pos = 341
-set osd_up_down_reference_pos = 312
-set osd_ready_mode_pos = 341
-set osd_esc_tmp_pos = 341
+set osd_link_quality_pos = 3527
+set osd_rssi_dbm_pos = 3495
+set osd_tim_1_pos = 10764
+set osd_tim_2_pos = 8300
+set osd_remaining_time_estimate_pos = 8332
+set osd_flymode_pos = 2580
+set osd_throttle_pos = 10316
+set osd_vtx_channel_pos = 3556
+set osd_crosshairs_pos = 2361
+set osd_ah_pos = 2234
+set osd_current_pos = 10604
+set osd_mah_drawn_pos = 10636
+set osd_wh_drawn_pos = 464
+set osd_craft_name_pos = 2103
+set osd_pilot_name_pos = 2136
+set osd_gps_speed_pos = 4395
+set osd_gps_lon_pos = 4147
+set osd_gps_lat_pos = 4179
+set osd_gps_sats_pos = 5250
+set osd_home_dir_pos = 4568
+set osd_home_dist_pos = 4570
+set osd_flight_dist_pos = 12794
+set osd_altitude_pos = 4427
+set osd_warnings_pos = 2421
+set osd_avg_cell_voltage_pos = 10700
+set osd_battery_usage_pos = 8746
+set osd_disarmed_pos = 2454
 set osd_esc_rpm_pos = 161
-set osd_esc_rpm_freq_pos = 341
-set osd_rtc_date_time_pos = 341
-set osd_adjustment_range_pos = 341
-set osd_flip_arrow_pos = 341
+set osd_flip_arrow_pos = 2298
 set osd_core_temp_pos = 280
-set osd_log_status_pos = 2105
-set osd_stick_overlay_left_pos = 341
-set osd_stick_overlay_right_pos = 341
-set osd_rate_profile_name_pos = 2509
-set osd_pid_profile_name_pos = 341
-set osd_profile_name_pos = 341
-set osd_rcchannels_pos = 341
-set osd_camera_frame_pos = 142
-set osd_efficiency_pos = 341
-set osd_total_flights_pos = 341
-set osd_aux_pos = 341
-set osd_sys_goggle_voltage_pos = 341
-set osd_sys_vtx_voltage_pos = 341
-set osd_sys_bitrate_pos = 341
-set osd_sys_delay_pos = 341
-set osd_sys_distance_pos = 341
-set osd_sys_lq_pos = 341
-set osd_sys_goggle_dvr_pos = 341
-set osd_sys_vtx_dvr_pos = 341
-set osd_sys_warnings_pos = 341
-set osd_sys_vtx_temp_pos = 341
-set osd_sys_fan_speed_pos = 341
+set osd_log_status_pos = 3146
+set osd_rate_profile_name_pos = 2587
+set osd_efficiency_pos = 8524
+set osd_total_flights_pos = 8364
+set osd_sys_vtx_voltage_pos = 1192
+set osd_sys_delay_pos = 1160
+set osd_sys_distance_pos = 1130
+set osd_sys_vtx_dvr_pos = 1095
+set osd_sys_vtx_temp_pos = 1219
 set osd_stat_bitmask = 813696742
 set osd_gps_sats_show_pdop = ON
-set osd_displayport_device = MSP
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 3
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
-set vcd_video_system = PAL
 set craft_name = Nazgul5
 set pilot_name = Misza
 
