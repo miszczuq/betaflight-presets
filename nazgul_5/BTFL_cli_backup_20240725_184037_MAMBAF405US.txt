@@ -26,19 +26,17 @@ feature LED_STRIP
 feature OSD
 
 # serial
-serial 2 8192 115200 57600 0 115200
+serial 1 131073 115200 57600 0 115200
 serial 3 2 115200 115200 0 115200
 serial 4 64 115200 57600 0 115200
 
 # beeper
 beeper -DISARMING
-beeper -ARMING_GPS_FIX
 beeper -BAT_CRIT_LOW
 beeper -BAT_LOW
 beeper -GPS_STATUS
 beeper -ACC_CALIBRATION
 beeper -ACC_CALIBRATION_FAIL
-beeper -READY_BEEP
 beeper -DISARM_REPEAT
 beeper -ARMED
 beeper -ON_USB
@@ -49,6 +47,48 @@ beeper -RC_SMOOTHING_INIT_FAIL
 
 # beacon
 beacon RX_LOST
+
+# led
+led 0 8,8::C:2
+led 1 9,9::C:2
+led 2 10,10::C:2
+led 3 11,11::C:2
+led 4 12,12::C:2
+led 5 13,13::C:2
+led 6 12,11::C:2
+led 7 11,10::C:2
+led 8 10,9::C:2
+led 9 9,8::C:2
+led 10 8,7::C:10
+led 11 9,6::C:10
+led 12 10,5::C:10
+led 13 11,4::C:10
+led 14 12,3::C:10
+led 15 13,2::C:10
+led 16 11,3::C:10
+led 17 10,4::C:10
+led 18 9,5::C:10
+led 19 8,6::C:10
+led 20 7,7::C:10
+led 21 6,6::C:10
+led 22 5,5::C:10
+led 23 4,4::C:10
+led 24 3,3::C:10
+led 25 2,2::C:10
+led 26 4,3::C:10
+led 27 5,4::C:10
+led 28 6,5::C:10
+led 29 7,6::C:10
+led 30 7,8::C:2
+led 31 6,9::C:2
+led 32 5,10::C:2
+led 33 4,11::C:2
+led 34 3,12::C:2
+led 35 2,13::C:2
+led 36 3,11::C:2
+led 37 4,10::C:2
+led 38 5,9::C:2
+led 39 6,8::C:2
 
 # aux
 aux 0 0 3 1700 2100 0 0
@@ -81,7 +121,8 @@ vtxtable powervalues 25 200 400 600 600
 vtxtable powerlabels 25 200 400 800 800
 
 # rxfail
-rxfail 4 s 1200
+rxfail 3 s 1200
+rxfail 4 h
 rxfail 5 s 1000
 
 # master
@@ -181,6 +222,8 @@ set osd_sys_warnings_pos = 341
 set osd_sys_vtx_temp_pos = 341
 set osd_sys_fan_speed_pos = 341
 set osd_stat_bitmask = 813696742
+set osd_gps_sats_show_pdop = ON
+set osd_displayport_device = MSP
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 3
