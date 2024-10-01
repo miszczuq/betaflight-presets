@@ -80,9 +80,9 @@ vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
 vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
 vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
 vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
-vtxtable powerlevels 5
-vtxtable powervalues 10 2 14 20 26
-vtxtable powerlabels 0 RCE 25 100 400
+vtxtable powerlevels 3
+vtxtable powervalues 0 1 2
+vtxtable powerlabels 25 100 400
 
 # master
 set gyro_lpf1_static_hz = 0
@@ -106,6 +106,7 @@ set small_angle = 180
 set deadband = 3
 set yaw_deadband = 3
 set report_cell_voltage = ON
+set ledstrip_profile = BEACON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
@@ -194,7 +195,8 @@ set osd_canvas_height = 13
 set debug_mode = GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 1
+set vtx_power = 3
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
 set vcd_video_system = NTSC
 set pinio_config = 129,1,1,1
@@ -325,6 +327,6 @@ set yaw_srate = 60
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
