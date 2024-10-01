@@ -95,7 +95,8 @@ set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 340
+set vbat_min_cell_voltage = 310
+set vbat_warning_cell_voltage = 320
 set yaw_motors_reversed = ON
 set small_angle = 180
 set deadband = 3
@@ -262,10 +263,13 @@ set tpa_breakpoint = 1250
 
 profile 2
 
+# profile 2
+set profile_name = Default
+
 profile 3
 
 # restore original profile selection
-profile 0
+profile 3
 
 rateprofile 0
 
