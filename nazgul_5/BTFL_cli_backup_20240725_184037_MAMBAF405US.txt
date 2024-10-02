@@ -194,6 +194,8 @@ set pilot_name = Misza
 profile 0
 
 # profile 0
+set angle_p_gain = 100
+set angle_limit = 65
 set horizon_level_strength = 70
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
