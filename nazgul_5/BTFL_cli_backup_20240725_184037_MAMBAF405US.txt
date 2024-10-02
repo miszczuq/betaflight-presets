@@ -128,11 +128,11 @@ rxfail 5 s 1000
 # master
 set acc_calibration = -2,0,194,1
 set rc_smoothing_auto_factor = 52
-set fpv_mix_degrees = 25
 set failsafe_procedure = GPS-RESCUE
 set bat_capacity = 1300
 set vbat_max_cell_voltage = 450
 set ibata_scale = 100
+set small_angle = 180
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
 set gps_set_home_point_once = ON
@@ -194,6 +194,7 @@ set pilot_name = Misza
 profile 0
 
 # profile 0
+set horizon_level_strength = 70
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
@@ -210,15 +211,18 @@ profile 0
 rateprofile 0
 
 # rateprofile 0
-set rateprofile_name = Slow
-set thr_mid = 35
+set rateprofile_name = Race533
+set thr_mid = 100
 set thr_expo = 64
-set roll_rc_rate = 15
-set pitch_rc_rate = 15
-set yaw_rc_rate = 15
-set roll_srate = 35
-set pitch_srate = 35
-set yaw_srate = 35
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
 
 rateprofile 1
 
@@ -227,26 +231,28 @@ set rateprofile_name = Normal
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
 set yaw_rc_rate = 15
-set roll_expo = 40
-set pitch_expo = 40
-set yaw_expo = 40
-set roll_srate = 60
-set pitch_srate = 60
-set yaw_srate = 60
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
 
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = Tricks
-set roll_rc_rate = 14
-set pitch_rc_rate = 14
-set yaw_rc_rate = 14
+set rateprofile_name = Linear
+set thr_mid = 45
+set thr_expo = 50
+set roll_rc_rate = 60
+set pitch_rc_rate = 60
+set yaw_rc_rate = 10
 set roll_expo = 50
 set pitch_expo = 50
-set yaw_expo = 50
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
+set yaw_expo = 25
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 60
 
 rateprofile 3
 
@@ -260,6 +266,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 2
 
 # save configuration
