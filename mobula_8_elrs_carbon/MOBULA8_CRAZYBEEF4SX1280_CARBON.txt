@@ -95,9 +95,8 @@ set acc_lpf_hz = 10
 set acc_trim_pitch = 1
 set acc_calibration = 1,-38,27,1
 set rc_smoothing_auto_factor = 52
-set fpv_mix_degrees = 25
 set blackbox_sample_rate = 1/2
-set dshot_idle_value = 1200
+set dshot_idle_value = 1000
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_pwm_protocol = DSHOT300
@@ -106,7 +105,6 @@ set failsafe_delay = 4
 set failsafe_off_delay = 30
 set failsafe_throttle = 1300
 set failsafe_throttle_low_delay = 40
-set failsafe_procedure = AUTO-LAND
 set failsafe_recovery_delay = 20
 set bat_capacity = 450
 set vbat_max_cell_voltage = 450
@@ -133,6 +131,7 @@ set gps_rescue_velocity_d = 15
 set gps_rescue_yaw_p = 40
 set deadband = 1
 set yaw_deadband = 1
+set report_cell_voltage = ON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
@@ -165,14 +164,13 @@ set osd_canvas_height = 13
 set debug_mode = DUAL_GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 4
+set vtx_power = 5
 set vtx_low_power_disarm = ON
 set vtx_freq = 5917
 set vcd_video_system = NTSC
 set pinio_box = 255,255,255,255
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
-set expresslrs_switch_mode = HYBRID
 set rpm_filter_min_hz = 200
 set craft_name = Carbon
 set pilot_name = Misza
@@ -290,6 +288,6 @@ set pitch_srate = 1
 set yaw_srate = 1
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
