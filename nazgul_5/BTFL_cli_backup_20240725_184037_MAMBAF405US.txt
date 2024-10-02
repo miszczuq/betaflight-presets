@@ -107,7 +107,7 @@ aux 11 49 2 900 1300 1 0
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
 adjrange 1 0 5 900 2100 29 5 0 0
-adjrange 2 0 8 900 2100 30 8 0 0
+adjrange 2 0 6 900 2100 30 6 0 0
 
 # vtxtable
 vtxtable bands 5
@@ -122,7 +122,7 @@ vtxtable powervalues 25 200 400 600 600
 vtxtable powerlabels 25 200 400 800 800
 
 # rxfail
-rxfail 3 s 1200
+rxfail 3 s 1300
 rxfail 5 s 1000
 
 # master
@@ -130,8 +130,8 @@ set acc_calibration = -2,0,194,1
 set rc_smoothing_auto_factor = 52
 set fpv_mix_degrees = 25
 set failsafe_procedure = GPS-RESCUE
+set bat_capacity = 1300
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 340
 set ibata_scale = 100
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
@@ -143,55 +143,46 @@ set ledstrip_profile = RACE
 set ledstrip_race_color = MAGENTA
 set ledstrip_rainbow_delta = 306
 set ledstrip_rainbow_freq = 360
-set osd_warn_bitmask = 313213
-set osd_link_quality_alarm = 50
-set osd_rssi_dbm_alarm = -98
-set osd_cap_alarm = 450
-set osd_tim1 = 1
-set osd_tim2 = 2
-set osd_vbat_pos = 8684
-set osd_rssi_pos = 312
-set osd_link_quality_pos = 3527
-set osd_rssi_dbm_pos = 3495
-set osd_tim_1_pos = 10764
-set osd_tim_2_pos = 8300
-set osd_remaining_time_estimate_pos = 8332
-set osd_flymode_pos = 2580
-set osd_throttle_pos = 10316
-set osd_vtx_channel_pos = 3556
-set osd_crosshairs_pos = 2361
-set osd_ah_pos = 2234
-set osd_current_pos = 10604
-set osd_mah_drawn_pos = 10636
-set osd_wh_drawn_pos = 464
-set osd_craft_name_pos = 2103
-set osd_pilot_name_pos = 2136
-set osd_gps_speed_pos = 4395
-set osd_gps_lon_pos = 4147
-set osd_gps_lat_pos = 4179
-set osd_gps_sats_pos = 5250
-set osd_home_dir_pos = 4568
-set osd_home_dist_pos = 4570
-set osd_flight_dist_pos = 12794
-set osd_altitude_pos = 4427
-set osd_warnings_pos = 2421
-set osd_avg_cell_voltage_pos = 10700
-set osd_battery_usage_pos = 8746
-set osd_disarmed_pos = 2454
-set osd_esc_rpm_pos = 161
-set osd_flip_arrow_pos = 2298
-set osd_core_temp_pos = 280
-set osd_log_status_pos = 3146
-set osd_rate_profile_name_pos = 2587
-set osd_efficiency_pos = 8524
-set osd_total_flights_pos = 8364
-set osd_sys_vtx_voltage_pos = 1192
-set osd_sys_delay_pos = 1160
-set osd_sys_distance_pos = 1130
-set osd_sys_vtx_dvr_pos = 1095
-set osd_sys_vtx_temp_pos = 1219
-set osd_stat_bitmask = 813696742
+set osd_warn_bitmask = 8191
+set osd_cap_alarm = 1000
+set osd_vbat_pos = 514
+set osd_link_quality_pos = 15883
+set osd_rssi_dbm_pos = 15852
+set osd_tim_1_pos = 33
+set osd_tim_2_pos = 14405
+set osd_remaining_time_estimate_pos = 12326
+set osd_flymode_pos = 10870
+set osd_throttle_pos = 14821
+set osd_crosshairs_pos = 12601
+set osd_ah_pos = 12474
+set osd_current_pos = 14852
+set osd_mah_drawn_pos = 14436
+set osd_craft_name_pos = 9834
+set osd_pilot_name_pos = 9828
+set osd_gps_speed_pos = 12613
+set osd_gps_lon_pos = 25196
+set osd_gps_lat_pos = 25186
+set osd_gps_sats_pos = 13315
+set osd_home_dir_pos = 12410
+set osd_home_dist_pos = 12376
+set osd_flight_dist_pos = 12581
+set osd_compass_bar_pos = 8214
+set osd_altitude_pos = 12549
+set osd_warnings_pos = 14741
+set osd_avg_cell_voltage_pos = 14885
+set osd_battery_usage_pos = 32773
+set osd_disarmed_pos = 14775
+set osd_nvario_pos = 234
+set osd_flip_arrow_pos = 14682
+set osd_log_status_pos = 9230
+set osd_rate_profile_name_pos = 10875
+set osd_camera_frame_pos = 143
+set osd_efficiency_pos = 8695
+set osd_sys_bitrate_pos = 1452
+set osd_sys_delay_pos = 1484
+set osd_stat_bitmask = 2297448
 set osd_gps_sats_show_pdop = ON
+set osd_displayport_device = AUTO
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 3
