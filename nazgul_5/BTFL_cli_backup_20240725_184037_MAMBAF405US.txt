@@ -126,18 +126,24 @@ rxfail 3 s 1300
 rxfail 5 s 1000
 
 # master
+set dyn_notch_count = 1
+set dyn_notch_q = 500
 set acc_calibration = -2,0,194,1
 set rc_smoothing_auto_factor = 52
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
 set failsafe_procedure = GPS-RESCUE
 set bat_capacity = 1300
 set vbat_max_cell_voltage = 450
 set ibata_scale = 100
+set yaw_motors_reversed = ON
 set small_angle = 180
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
 set gps_set_home_point_once = ON
 set gps_rescue_throttle_hover = 1200
 set gps_rescue_allow_arming_without_fix = ON
+set pid_process_denom = 2
 set report_cell_voltage = ON
 set ledstrip_profile = RACE
 set ledstrip_race_color = MAGENTA
