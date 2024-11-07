@@ -64,13 +64,20 @@ adjrange 1 0 5 900 2100 29 5 0 0
 adjrange 2 0 8 900 2100 30 8 0 0
 
 # master
+set dyn_notch_count = 1
+set dyn_notch_q = 500
 set acc_calibration = 40,34,19,1
 set rc_smoothing_auto_factor = 52
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
+set motor_output_reordering = 2,3,0,1,4,5,6,7
 set align_board_roll = 180
 set align_board_yaw = 45
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
+set yaw_motors_reversed = ON
 set small_angle = 180
+set pid_process_denom = 2
 set report_cell_voltage = ON
 set ledstrip_profile = BEACON
 set osd_warn_bitmask = 8191
@@ -111,7 +118,6 @@ set osd_efficiency_pos = 8695
 set osd_sys_bitrate_pos = 1452
 set osd_sys_delay_pos = 1484
 set osd_stat_bitmask = 2297448
-set osd_profile = 2
 set osd_gps_sats_show_pdop = ON
 set osd_displayport_device = AUTO
 set craft_name = DigiTP
@@ -120,12 +126,26 @@ set pilot_name = Misza
 profile 0
 
 # profile 0
+set p_pitch = 37
+set i_pitch = 67
+set d_pitch = 36
+set f_pitch = 99
+set p_roll = 35
+set i_roll = 63
+set d_roll = 31
+set f_roll = 95
+set p_yaw = 35
+set i_yaw = 63
+set f_yaw = 95
+set d_min_roll = 23
+set d_min_pitch = 27
 set launch_control_mode = PITCHONLY
 set launch_trigger_throttle_percent = 70
 set launch_angle_limit = 75
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
+set simplified_master_multiplier = 80
 
 profile 1
 
