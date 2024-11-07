@@ -72,6 +72,7 @@ set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set small_angle = 180
 set report_cell_voltage = ON
+set ledstrip_profile = BEACON
 set osd_warn_bitmask = 8191
 set osd_cap_alarm = 1000
 set osd_vbat_pos = 514
@@ -80,14 +81,14 @@ set osd_rssi_dbm_pos = 15852
 set osd_tim_1_pos = 33
 set osd_tim_2_pos = 14405
 set osd_remaining_time_estimate_pos = 12326
-set osd_flymode_pos = 10870
+set osd_flymode_pos = 14901
 set osd_throttle_pos = 14821
-set osd_crosshairs_pos = 12601
-set osd_ah_pos = 12474
+set osd_crosshairs_pos = 12633
+set osd_ah_pos = 12506
 set osd_current_pos = 14852
 set osd_mah_drawn_pos = 14436
-set osd_craft_name_pos = 9834
-set osd_pilot_name_pos = 9828
+set osd_craft_name_pos = 1642
+set osd_pilot_name_pos = 1636
 set osd_gps_speed_pos = 12613
 set osd_gps_lon_pos = 25196
 set osd_gps_lat_pos = 25186
@@ -102,14 +103,15 @@ set osd_avg_cell_voltage_pos = 14885
 set osd_battery_usage_pos = 32773
 set osd_disarmed_pos = 14775
 set osd_nvario_pos = 234
-set osd_flip_arrow_pos = 14682
+set osd_flip_arrow_pos = 14618
 set osd_log_status_pos = 9230
-set osd_rate_profile_name_pos = 10875
+set osd_rate_profile_name_pos = 14907
 set osd_camera_frame_pos = 143
 set osd_efficiency_pos = 8695
 set osd_sys_bitrate_pos = 1452
 set osd_sys_delay_pos = 1484
 set osd_stat_bitmask = 2297448
+set osd_profile = 2
 set osd_gps_sats_show_pdop = ON
 set osd_displayport_device = AUTO
 set craft_name = DigiTP
@@ -180,6 +182,6 @@ set yaw_srate = 90
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
