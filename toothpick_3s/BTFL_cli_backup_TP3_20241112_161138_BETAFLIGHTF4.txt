@@ -1,0 +1,146 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F405 (S405) 4.2.6 Jan  5 2021 / 19:07:23 (a4b6db1e7) MSP API: 1.43
+# config: manufacturer_id: FPVM, board_name: BETAFLIGHTF4, version: f92ddc38, date: 2020-04-28T07:37:21Z
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name BETAFLIGHTF4
+manufacturer_id FPVM
+mcu_id 003a00293439470f39313831
+signature 
+
+# name: TP3
+
+# feature
+feature -RX_PARALLEL_PWM
+feature RX_SERIAL
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
+
+# map
+map RTEA1234
+
+# serial
+serial 2 8192 115200 57600 0 115200
+serial 5 64 115200 57600 0 115200
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 1300 1700 0 0
+aux 2 13 3 1700 2100 0 0
+aux 3 19 2 1300 1700 0 0
+aux 4 35 2 1700 2100 0 0
+
+# vtxtable
+vtxtable bands 5
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665    0 5885 5905    0    0
+vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 4
+vtxtable powervalues 25 100 200 400
+vtxtable powerlabels 25 100 200 350
+
+# master
+set gyro_lowpass2_hz = 375
+set dyn_notch_width_percent = 0
+set dyn_notch_q = 250
+set dyn_notch_max_hz = 350
+set dyn_lpf_gyro_min_hz = 300
+set dyn_lpf_gyro_max_hz = 750
+set acc_calibration = -54,-19,-38,1
+set rssi_channel = 16
+set serialrx_provider = SBUS
+set dshot_idle_value = 300
+set motor_pwm_protocol = DSHOT600
+set bat_capacity = 450
+set vbat_max_cell_voltage = 440
+set vbat_min_cell_voltage = 280
+set vbat_warning_cell_voltage = 320
+set current_meter = ADC
+set battery_meter = ADC
+set ibata_scale = 0
+set small_angle = 180
+set osd_tim1 = 5376
+set osd_tim2 = 6401
+set osd_vbat_pos = 417
+set osd_rssi_pos = 2369
+set osd_tim_2_pos = 2433
+set osd_throttle_pos = 353
+set osd_warnings_pos = 14598
+set osd_avg_cell_voltage_pos = 2401
+set osd_stat_rtc_date_time = ON
+set osd_stat_tim_1 = ON
+set osd_stat_max_spd = OFF
+set osd_stat_battery = ON
+set osd_stat_bbox = OFF
+set osd_stat_bb_no = OFF
+set osd_stat_max_esc_temp = ON
+set osd_stat_min_link_quality = ON
+set vtx_band = 1
+set vtx_channel = 1
+set vtx_power = 3
+set vtx_freq = 5865
+set vcd_video_system = PAL
+set name = TP3
+
+profile 0
+
+# profile 0
+set dyn_lpf_dterm_min_hz = 105
+set dyn_lpf_dterm_max_hz = 255
+set dterm_lowpass2_hz = 225
+set p_pitch = 69
+set d_pitch = 44
+set f_pitch = 143
+set p_roll = 63
+set d_roll = 40
+set f_roll = 135
+set p_yaw = 68
+set f_yaw = 135
+set d_min_roll = 0
+set d_min_pitch = 0
+
+profile 1
+
+profile 2
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set roll_rc_rate = 118
+set pitch_rc_rate = 118
+set roll_expo = 20
+set pitch_expo = 20
+set yaw_expo = 20
+set roll_srate = 78
+set pitch_srate = 76
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+rateprofile 4
+
+rateprofile 5
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
