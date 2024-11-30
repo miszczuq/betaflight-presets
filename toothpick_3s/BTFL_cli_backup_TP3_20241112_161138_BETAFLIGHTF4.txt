@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F405 (S405) 4.2.6 Jan  5 2021 / 19:07:23 (a4b6db1e7) MSP API: 1.43
-# config: manufacturer_id: FPVM, board_name: BETAFLIGHTF4, version: f92ddc38, date: 2020-04-28T07:37:21Z
+# Betaflight / STM32F405 (S405) 4.5.1 Aug  7 2024 / 20:15:07 (77d01ba3b) MSP API: 1.46
+# config rev: 67eee40
 
 # start the command batch
 batch start
@@ -16,21 +16,35 @@ manufacturer_id FPVM
 mcu_id 003a00293439470f39313831
 signature 
 
-# name: TP3
-
 # feature
-feature -RX_PARALLEL_PWM
 feature -AIRMODE
-feature RX_SERIAL
 feature TELEMETRY
-
-# beacon
-beacon RX_LOST
-beacon RX_SET
+feature OSD
 
 # serial
 serial 0 8192 115200 57600 0 115200
 serial 5 64 115200 57600 0 115200
+
+# beeper
+beeper -DISARMING
+beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
+beeper -BAT_LOW
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
 
 # aux
 aux 0 0 3 1700 2100 0 0
@@ -53,46 +67,45 @@ adjrange 2 0 8 900 2100 30 8 0 0
 # vtxtable
 vtxtable bands 5
 vtxtable channels 8
-vtxtable band 1 BOSCAM_A A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
-vtxtable band 2 BOSCAM_B B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
-vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665    0 5885 5905    0    0
-vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 1 BAND_A   A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BAND_B   B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BAND_E   E CUSTOM  5705 5685 5665 5665 5885 5905 5905 5905
+vtxtable band 4 AIRWAVE  F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
 vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
 vtxtable powerlevels 4
-vtxtable powervalues 25 100 200 400
+vtxtable powervalues 14 20 23 25
 vtxtable powerlabels 25 100 200 350
 
 # master
-set gyro_lowpass2_hz = 375
-set dyn_notch_width_percent = 0
-set dyn_notch_q = 250
-set dyn_notch_max_hz = 350
-set dyn_lpf_gyro_min_hz = 300
-set dyn_lpf_gyro_max_hz = 750
-set acc_calibration = -54,-19,-38,1
-set rssi_channel = 16
-set serialrx_provider = CRSF
-set dshot_idle_value = 300
-set motor_pwm_protocol = DSHOT600
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set acc_calibration = -5,-98,-28,1
+set rc_smoothing_auto_factor = 52
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
 set bat_capacity = 450
-set vbat_max_cell_voltage = 440
-set vbat_min_cell_voltage = 280
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
 set vbat_warning_cell_voltage = 320
 set current_meter = ADC
 set battery_meter = ADC
 set ibata_scale = 0
+set yaw_motors_reversed = ON
 set small_angle = 180
-set ledstrip_profile = BEACON
+set pid_process_denom = 2
+set report_cell_voltage = ON
+set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
 set osd_cap_alarm = 450
-set osd_esc_temp_alarm = 0
 set osd_tim1 = 1
 set osd_tim2 = 2
 set osd_vbat_pos = 341
 set osd_rssi_pos = 312
 set osd_link_quality_pos = 2423
+set osd_link_tx_power_pos = 341
 set osd_rssi_dbm_pos = 2391
+set osd_rsnr_pos = 341
 set osd_tim_1_pos = 2433
 set osd_tim_2_pos = 139
 set osd_remaining_time_estimate_pos = 341
@@ -106,8 +119,10 @@ set osd_ah_sbar_pos = 313
 set osd_ah_pos = 2126
 set osd_current_pos = 2336
 set osd_mah_drawn_pos = 2369
+set osd_wh_drawn_pos = 341
 set osd_motor_diag_pos = 341
 set osd_craft_name_pos = 394
+set osd_pilot_name_pos = 341
 set osd_gps_speed_pos = 341
 set osd_gps_lon_pos = 341
 set osd_gps_lat_pos = 341
@@ -130,6 +145,8 @@ set osd_rol_ang_pos = 341
 set osd_battery_usage_pos = 341
 set osd_disarmed_pos = 2314
 set osd_nheading_pos = 341
+set osd_up_down_reference_pos = 312
+set osd_ready_mode_pos = 341
 set osd_esc_tmp_pos = 341
 set osd_esc_rpm_pos = 161
 set osd_esc_rpm_freq_pos = 341
@@ -146,42 +163,46 @@ set osd_profile_name_pos = 341
 set osd_rcchannels_pos = 341
 set osd_camera_frame_pos = 142
 set osd_efficiency_pos = 341
-set osd_stat_rtc_date_time = ON
-set osd_stat_tim_1 = ON
-set osd_stat_max_spd = OFF
-set osd_stat_battery = ON
-set osd_stat_bbox = OFF
-set osd_stat_bb_no = OFF
-set osd_stat_max_esc_temp = ON
-set osd_stat_min_link_quality = ON
+set osd_total_flights_pos = 341
+set osd_aux_pos = 341
+set osd_sys_goggle_voltage_pos = 341
+set osd_sys_vtx_voltage_pos = 341
+set osd_sys_bitrate_pos = 341
+set osd_sys_delay_pos = 341
+set osd_sys_distance_pos = 341
+set osd_sys_lq_pos = 341
+set osd_sys_goggle_dvr_pos = 341
+set osd_sys_vtx_dvr_pos = 341
+set osd_sys_warnings_pos = 341
+set osd_sys_vtx_temp_pos = 341
+set osd_sys_fan_speed_pos = 341
+set osd_stat_bitmask = 813696742
+set osd_canvas_height = 13
 set vtx_band = 5
 set vtx_channel = 8
 set vtx_power = 4
 set vtx_low_power_disarm = UNTIL_FIRST_ARM
 set vtx_freq = 5917
 set vcd_video_system = NTSC
-set name = TP3
+set pilot_name = Misza
 
 profile 0
 
 # profile 0
-set dyn_lpf_dterm_min_hz = 105
-set dyn_lpf_dterm_max_hz = 255
-set dterm_lowpass2_hz = 225
-set p_pitch = 69
-set d_pitch = 44
-set f_pitch = 143
-set p_roll = 63
-set d_roll = 40
-set f_roll = 135
-set p_yaw = 68
-set f_yaw = 135
-set d_min_roll = 0
-set d_min_pitch = 0
+set angle_p_gain = 90
+set angle_limit = 70
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 70
+set launch_angle_limit = 75
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 8
 
 profile 1
 
 profile 2
+
+profile 3
 
 # restore original profile selection
 profile 0
@@ -191,7 +212,6 @@ rateprofile 0
 # rateprofile 0
 set rateprofile_name = Race533
 set thr_mid = 100
-set rates_type = ACTUAL
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -206,34 +226,30 @@ rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Normal
-set rates_type = ACTUAL
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
 set yaw_rc_rate = 15
 set roll_expo = 56
 set pitch_expo = 56
 set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
 
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = Tricks
-set rates_type = ACTUAL
-set roll_rc_rate = 14
-set pitch_rc_rate = 14
-set yaw_rc_rate = 14
-set roll_expo = 50
-set pitch_expo = 50
-set yaw_expo = 50
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
+set rateprofile_name = Linear
+set thr_expo = 20
+set roll_rc_rate = 60
+set pitch_rc_rate = 60
+set yaw_rc_rate = 20
+set yaw_expo = 35
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 70
 
 rateprofile 3
-
-rateprofile 4
-
-rateprofile 5
 
 # restore original rateprofile selection
 rateprofile 0
