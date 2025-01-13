@@ -2,9 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F411 (S411) 4.4.2 Jun 25 2024 / 07:33:20 (23d066d08) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F411 (S411) 4.5.1 Dec 21 2024 / 02:59:58 (77d01ba3b) MSP API: 1.46
+# config rev: 16ac022
 
 # start the command batch
 batch start
@@ -17,7 +16,7 @@ manufacturer_id HAMO
 mcu_id 004600664731500320313348
 signature 
 
-# name: Mob6 HDZERO RACE
+# name: Mob6 FreestyleHD
 
 # resources
 resource MOTOR 1 B08
@@ -26,11 +25,10 @@ resource MOTOR 3 B06
 resource MOTOR 4 B07
 
 # feature
-feature -RX_SERIAL
-feature -SOFTSERIAL
 feature -AIRMODE
+feature TELEMETRY
 feature LED_STRIP
-feature RX_SPI
+feature OSD
 
 # serial
 serial 0 131073 115200 57600 0 115200
@@ -87,100 +85,117 @@ vtxtable powerlevels 3
 vtxtable powervalues 14 23 0
 vtxtable powerlabels 25 200 0
 
+# vtx
+vtx 0 3 0 0 3 900 1300
+vtx 1 3 0 0 1 1300 1700
+vtx 2 3 0 0 2 1700 2100
+
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_type = PT2
-set gyro_lpf2_static_hz = 0
-set dyn_notch_q = 500
-set dyn_notch_min_hz = 120
-set dyn_notch_max_hz = 500
-set acc_lpf_hz = 10
-set acc_calibration = 101,196,48,1
-set rc_smoothing_auto_factor = 52
-set dshot_idle_value = 600
+set dyn_notch_count = 1
+set dyn_notch_q = 600
+set dyn_notch_max_hz = 750
+set gyro_lpf1_dyn_min_hz = 0
+set gyro_lpf1_dyn_max_hz = 0
+set acc_calibration = -78,66,45,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
 set dshot_burst = OFF
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
-set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set motor_output_reordering = 0,3,2,1,4,5,6,7
 set failsafe_delay = 4
 set failsafe_recovery_delay = 20
 set align_board_roll = 180
 set align_board_yaw = 45
+set bat_capacity = 300
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 310
 set vbat_warning_cell_voltage = 320
 set yaw_motors_reversed = ON
 set small_angle = 180
-set deadband = 1
-set yaw_deadband = 1
+set pid_process_denom = 2
 set report_cell_voltage = ON
-set ledstrip_profile = BEACON
+set osd_warn_bitmask = 270207
 set osd_vbat_pos = 45
 set osd_rssi_pos = 33
-set osd_link_quality_pos = 3465
-set osd_rssi_dbm_pos = 3498
-set osd_tim_1_pos = 3114
-set osd_tim_2_pos = 2433
-set osd_flymode_pos = 3562
+set osd_link_quality_pos = 7660
+set osd_rssi_dbm_pos = 5580
+set osd_tim_1_pos = 1068
+set osd_tim_2_pos = 6656
+set osd_flymode_pos = 7726
 set osd_g_force_pos = 65
-set osd_throttle_pos = 3529
-set osd_vtx_channel_pos = 2081
-set osd_current_pos = 2528
-set osd_mah_drawn_pos = 2497
-set osd_craft_name_pos = 2547
-set osd_warnings_pos = 329
-set osd_avg_cell_voltage_pos = 2465
-set osd_disarmed_pos = 2517
+set osd_throttle_pos = 6592
+set osd_vtx_channel_pos = 6689
+set osd_crosshairs_pos = 4440
+set osd_ah_pos = 4313
+set osd_current_pos = 6624
+set osd_mah_drawn_pos = 7693
+set osd_craft_name_pos = 6706
+set osd_warnings_pos = 6515
+set osd_avg_cell_voltage_pos = 6166
+set osd_disarmed_pos = 6613
 set osd_esc_rpm_pos = 161
-set osd_core_temp_pos = 14616
-set osd_displayport_device = MSP
+set osd_core_temp_pos = 15789
+set osd_rate_profile_name_pos = 5670
 set osd_canvas_width = 50
 set osd_canvas_height = 18
 set debug_mode = RX_EXPRESSLRS_SPI
+set cpu_overclock = 120MHZ
 set vtx_band = 5
-set vtx_channel = 1
+set vtx_channel = 7
 set vtx_power = 1
-set vtx_freq = 5658
-set vcd_video_system = HD
+set vtx_freq = 5880
 set gyro_1_sensor_align = DEFAULT
 set gyro_1_align_yaw = 0
 set expresslrs_uid = 118,82,212,58,1,20
 set expresslrs_rate_index = 1
-set craft_name = Mob6 HDZERO RACE
+set expresslrs_switch_mode = HYBRID
+set cpu_late_limit_permille = 15
+set rpm_filter_harmonics = 1
+set rpm_filter_fade_range_hz = 120
+set craft_name = Mob6 FreestyleHD
 set pilot_name = Misza
 
 profile 0
 
 # profile 0
+set dterm_lpf1_dyn_min_hz = 67
+set dterm_lpf1_dyn_max_hz = 135
+set dterm_lpf1_dyn_expo = 7
+set dterm_lpf1_static_hz = 67
+set dterm_lpf2_static_hz = 135
+set vbat_sag_compensation = 100
 set crash_recovery = ON
-set p_pitch = 50
-set i_pitch = 68
-set d_pitch = 30
-set f_pitch = 101
-set p_roll = 53
-set i_roll = 72
-set d_roll = 31
-set f_roll = 108
-set p_yaw = 53
-set i_yaw = 72
-set f_yaw = 108
-set d_min_roll = 31
+set iterm_relax_cutoff = 45
+set p_pitch = 44
+set i_pitch = 87
+set d_pitch = 38
+set f_pitch = 143
+set p_roll = 42
+set i_roll = 83
+set d_roll = 32
+set f_roll = 138
+set d_min_roll = 25
 set d_min_pitch = 30
-set launch_control_mode = PITCHONLY
-set launch_trigger_throttle_percent = 70
-set launch_angle_limit = 75
+set thrust_linear = 20
 set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 45
-set feedforward_jitter_factor = 8
-set simplified_i_gain = 75
-set simplified_d_gain = 105
-set simplified_pi_gain = 120
-set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 90
-set simplified_pitch_d_gain = 85
-set simplified_pitch_pi_gain = 90
+set feedforward_smooth_factor = 65
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 180
+set dyn_idle_p_gain = 35
+set dyn_idle_start_increase = 60
+set simplified_pids_mode = RP
+set simplified_i_gain = 110
+set simplified_d_gain = 85
+set simplified_pi_gain = 95
+set simplified_dmax_gain = 80
+set simplified_feedforward_gain = 115
+set simplified_pitch_d_gain = 105
+set simplified_dterm_filter_multiplier = 90
+set ez_landing_limit = 5
 
 profile 1
 
@@ -237,6 +252,6 @@ set yaw_srate = 90
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 2
 
 # save configuration
