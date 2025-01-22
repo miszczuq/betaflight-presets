@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F411 (S411) 4.6.0 Jan 21 2025 / 12:12:08 (899ce6731) MSP API: 1.47
-# config rev: 6e28391
+# Betaflight / STM32F411 (S411) 4.6.0 Jan 22 2025 / 01:29:48 (norevision) MSP API: 1.47
+# config rev: 3f3dd34
 
 # start the command batch
 batch start
@@ -52,12 +52,12 @@ beacon RX_SET
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 46 4 1700 2100 0 0
-aux 3 13 0 1700 2100 1 0
-aux 4 13 2 1300 1700 1 0
-aux 5 15 9 900 1300 0 0
-aux 6 28 1 1700 2100 0 0
-aux 7 28 1 900 1300 0 0
+aux 2 3 7 1125 1275 0 0
+aux 3 11 7 1325 1525 0 0
+aux 4 46 4 1700 2100 0 0
+aux 5 13 0 1700 2100 1 0
+aux 6 13 2 1300 1700 1 0
+aux 7 15 9 900 1300 0 0
 aux 8 35 0 1700 2100 1 0
 aux 9 35 2 1700 2100 1 0
 aux 10 49 0 1700 2100 1 0
@@ -80,6 +80,9 @@ vtxtable powerlevels 4
 vtxtable powervalues 25 100 200 400
 vtxtable powerlabels 25 100 200 350
 
+# rxfail
+rxfail 5 s 1000
+
 # master
 set dyn_notch_count = 1
 set dyn_notch_q = 500
@@ -87,12 +90,14 @@ set acc_calibration = -22,-22,-251,1
 set rc_smoothing_auto_factor = 52
 set dshot_bidir = ON
 set motor_poles = 12
+set failsafe_procedure = GPS-RESCUE
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set small_angle = 180
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
 set gps_set_home_point_once = ON
+set gps_rescue_alt_mode = FIXED_ALT
 set gps_rescue_allow_arming_without_fix = ON
 set pid_process_denom = 2
 set report_cell_voltage = ON
@@ -117,24 +122,22 @@ set osd_anti_gravity_pos = 341
 set osd_g_force_pos = 341
 set osd_throttle_pos = 2081
 set osd_vtx_channel_pos = 2453
-set osd_crosshairs_pos = 2253
 set osd_ah_sbar_pos = 313
-set osd_ah_pos = 2126
 set osd_current_pos = 2336
 set osd_mah_drawn_pos = 2369
 set osd_wh_drawn_pos = 341
 set osd_motor_diag_pos = 341
 set osd_craft_name_pos = 394
 set osd_pilot_name_pos = 341
-set osd_gps_speed_pos = 341
+set osd_gps_speed_pos = 2259
 set osd_gps_lon_pos = 341
 set osd_gps_lat_pos = 341
-set osd_gps_sats_pos = 341
-set osd_home_dir_pos = 341
+set osd_gps_sats_pos = 2102
+set osd_home_dir_pos = 2092
 set osd_home_dist_pos = 341
-set osd_flight_dist_pos = 341
+set osd_flight_dist_pos = 2093
 set osd_compass_bar_pos = 341
-set osd_altitude_pos = 341
+set osd_altitude_pos = 18509
 set osd_pid_roll_pos = 341
 set osd_pid_pitch_pos = 341
 set osd_pid_yaw_pos = 341
