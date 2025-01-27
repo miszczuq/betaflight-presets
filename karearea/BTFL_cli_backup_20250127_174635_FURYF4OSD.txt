@@ -1,0 +1,50 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F405 (S405) 4.5.1 Dec  3 2024 / 03:15:04 (77d01ba3b) MSP API: 1.46
+# config rev: 283a21f
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name FURYF4OSD
+manufacturer_id DIAT
+mcu_id 002e002f3339470d30363535
+signature 
+
+# feature
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# master
+set acc_calibration = -4,-27,-22,1
+set osd_canvas_height = 13
+
+profile 0
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
