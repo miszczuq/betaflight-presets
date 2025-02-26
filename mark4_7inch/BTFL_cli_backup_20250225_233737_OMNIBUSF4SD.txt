@@ -1,10 +1,10 @@
 defaults nosave
 
+# diff all
 
 # version
-# Betaflight / STM32F405 (S405) 4.4.3 Jun 25 2024 / 09:57:30 (738127e7e) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F405 (S405) 4.6.0 Feb 26 2025 / 18:37:23 (norevision) MSP API: 1.47
+# config rev: 5f4908d
 
 # start the command batch
 batch start
@@ -17,14 +17,24 @@ manufacturer_id AIRB
 mcu_id 002b00293433510435373537
 signature 
 
+# name: Mark7
+
+# resources
+resource SERVO 8 B06
+resource LED_STRIP 1 NONE
+
 # feature
 feature -AIRMODE
+feature GPS
+feature TELEMETRY
 feature LED_STRIP
+feature OSD
+feature CHANNEL_FORWARDING
 
 # serial
-serial 0 64 115200 57600 0 115200
-serial 2 8192 115200 57600 0 115200
-serial 5 0 115200 57600 0 115200
+serial UART1 64 115200 57600 0 115200
+serial UART3 2048 115200 57600 0 115200
+serial UART6 2 115200 115200 0 115200
 
 # beeper
 beeper -DISARMING
@@ -68,14 +78,14 @@ adjrange 2 0 8 900 2100 30 8 0 0
 # vtxtable
 vtxtable bands 5
 vtxtable channels 8
-vtxtable band 1 BOSCAM_A A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
-vtxtable band 2 BOSCAM_B B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
-vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665    0 5885 5905    0    0
-vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
-vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
-vtxtable powerlevels 5
-vtxtable powervalues 25 200 400 600 600
-vtxtable powerlabels 25 200 400 800 800
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 4
+vtxtable powervalues 14 20 26 36
+vtxtable powerlabels 25 100 400 3W
 
 # master
 set gyro_lpf1_static_hz = 100
@@ -93,9 +103,14 @@ set motor_pwm_protocol = DSHOT300
 set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set small_angle = 180
+set gps_sbas_mode = AUTO
+set gps_auto_baud = ON
+set gps_ublox_use_galileo = ON
+set gps_set_home_point_once = ON
 set pid_process_denom = 4
 set simplified_gyro_filter_multiplier = 40
 set report_cell_voltage = ON
+set ledstrip_profile = BEACON
 set osd_warn_bitmask = 313213
 set osd_link_quality_alarm = 50
 set osd_rssi_dbm_alarm = -98
@@ -179,11 +194,14 @@ set osd_sys_warnings_pos = 341
 set osd_sys_vtx_temp_pos = 341
 set osd_sys_fan_speed_pos = 341
 set osd_stat_bitmask = 813696742
-set osd_canvas_width = 30
-set osd_canvas_height = 13
+set vtx_band = 5
+set vtx_channel = 1
+set vtx_power = 2
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
+set vtx_freq = 5658
 set vcd_video_system = NTSC
-set gyro_1_align_yaw = 2700
 set rpm_filter_harmonics = 2
+set craft_name = Mark7
 set pilot_name = Misza
 
 profile 0
@@ -206,8 +224,8 @@ set f_roll = 206
 set p_yaw = 57
 set i_yaw = 66
 set f_yaw = 206
-set d_min_roll = 58
-set d_min_pitch = 72
+set d_max_roll = 0
+set d_max_pitch = 0
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
@@ -216,7 +234,6 @@ set simplified_master_multiplier = 150
 set simplified_i_gain = 65
 set simplified_d_gain = 130
 set simplified_pi_gain = 85
-set simplified_dmax_gain = 0
 set simplified_feedforward_gain = 115
 set simplified_pitch_d_gain = 110
 
@@ -266,6 +283,6 @@ rateprofile 2
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 0
 
 # save configuration
