@@ -17,9 +17,35 @@ mcu_id 003100434d46500220363233
 signature 
 
 # feature
+feature -AIRMODE
 feature TELEMETRY
 feature LED_STRIP
 feature OSD
+
+# serial
+serial 2 2048 115200 57600 0 115200
+serial 3 64 115200 57600 0 115200
+
+# beeper
+beeper -DISARMING
+beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
+beeper -BAT_LOW
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
 
 # led
 led 0 9,7::CB:8
@@ -27,30 +53,104 @@ led 1 10,7::CB:8
 led 2 11,7::CB:8
 led 3 12,7::CB:8
 
+# aux
+aux 0 0 3 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 15 9 900 1300 0 0
+aux 5 28 1 1700 2100 0 0
+aux 6 28 1 900 1300 0 0
+aux 7 35 0 1700 2100 1 0
+aux 8 35 2 1700 2100 1 0
+aux 9 49 0 1700 2100 1 0
+aux 10 49 2 900 1300 1 0
+
+# adjrange
+adjrange 0 0 2 900 2100 12 2 0 0
+adjrange 1 0 5 900 2100 29 5 0 0
+adjrange 2 0 8 900 2100 30 8 0 0
+
+# vtxtable
+vtxtable bands 5
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 4
+vtxtable powervalues 14 20 26 36
+vtxtable powerlabels 25 100 400 MAX
+
 # master
 set dyn_notch_count = 1
 set dyn_notch_q = 500
 set acc_calibration = -189,21,83,1
+set rc_smoothing_auto_factor = 52
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
+set motor_poles = 12
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
 set ibata_scale = 177
 set ibata_offset = -87
+set yaw_motors_reversed = ON
+set small_angle = 180
 set pid_process_denom = 2
-set osd_vbat_pos = 2349
-set osd_crosshairs_pos = 2286
-set osd_ah_sbar_pos = 2287
-set osd_ah_pos = 2159
-set osd_current_pos = 2433
-set osd_warnings_pos = 14730
-set osd_avg_cell_voltage_pos = 2413
+set report_cell_voltage = ON
+set ledstrip_profile = BEACON
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 450
+set osd_tim1 = 1
+set osd_tim2 = 2
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2487
+set osd_rssi_dbm_pos = 2455
+set osd_tim_1_pos = 2114
+set osd_tim_2_pos = 139
+set osd_flymode_pos = 2504
+set osd_throttle_pos = 2433
+set osd_vtx_channel_pos = 2516
+set osd_crosshairs_pos = 2285
+set osd_ah_pos = 2158
+set osd_current_pos = 2464
+set osd_mah_drawn_pos = 2081
+set osd_craft_name_pos = 2089
+set osd_pilot_name_pos = 2096
+set osd_warnings_pos = 2313
+set osd_avg_cell_voltage_pos = 2497
+set osd_disarmed_pos = 2347
+set osd_esc_rpm_pos = 161
+set osd_flip_arrow_pos = 2254
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2105
+set osd_rate_profile_name_pos = 2509
+set osd_stat_bitmask = 813696742
 set osd_displayport_device = AUTO
 set osd_canvas_width = 30
-set osd_canvas_height = 13
-set vcd_video_system = AUTO
+set osd_canvas_height = 16
+set vtx_band = 5
+set vtx_channel = 1
+set vtx_power = 4
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
+set vtx_freq = 5658
+set vcd_video_system = PAL
 set gyro_1_sensor_align = CW180
 set gyro_1_align_yaw = 1800
+set pilot_name = Misza
 
 profile 0
+
+# profile 0
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 70
+set launch_angle_limit = 75
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 8
 
 profile 1
 
@@ -63,9 +163,46 @@ profile 0
 
 rateprofile 0
 
+# rateprofile 0
+set rateprofile_name = Race533
+set thr_mid = 100
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
+
 rateprofile 1
 
+# rateprofile 1
+set rateprofile_name = Normal
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 15
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
 rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = Tricks
+set roll_rc_rate = 14
+set pitch_rc_rate = 14
+set yaw_rc_rate = 14
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 90
 
 rateprofile 3
 
