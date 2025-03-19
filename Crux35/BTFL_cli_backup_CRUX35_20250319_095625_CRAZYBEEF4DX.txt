@@ -1,0 +1,175 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F411 (S411) 4.5.0 Jun 25 2024 / 19:25:54 (c155f5830) MSP API: 1.46
+# config rev: a0cb3dc
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name CRAZYBEEF4DX
+manufacturer_id HAMO
+mcu_id 001a00313032511932343435
+signature 
+
+# name: Crux35
+
+# feature
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# serial
+serial 0 131073 115200 57600 0 115200
+serial 1 64 115200 57600 0 115200
+
+# beeper
+beeper -BAT_LOW
+beeper -ON_USB
+
+# map
+map TAER1234
+
+# aux
+aux 0 0 0 1800 2100 0 0
+aux 1 1 1 1300 1700 0 0
+aux 2 2 1 1775 2100 0 0
+aux 3 13 2 1300 1700 0 0
+aux 4 19 4 1800 2100 0 0
+aux 5 35 2 1750 2100 0 0
+
+# vtxtable
+vtxtable bands 6
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
+vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
+vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
+vtxtable powerlevels 3
+vtxtable powervalues 14 23 0
+vtxtable powerlabels 25 200 0
+
+# vtx
+vtx 0 3 0 0 1 900 1100
+vtx 1 3 0 0 2 1150 2050
+
+# master
+set dyn_notch_count = 2
+set dyn_notch_min_hz = 125
+set dyn_notch_max_hz = 850
+set acc_calibration = 1,-8,9,1
+set min_check = 1010
+set max_check = 1990
+set rc_smoothing_auto_factor = 140
+set rc_smoothing_setpoint_cutoff = 25
+set rc_smoothing_feedforward_cutoff = 25
+set dshot_bidir = ON
+set motor_poles = 12
+set vbat_max_cell_voltage = 440
+set ibata_scale = 470
+set yaw_motors_reversed = ON
+set small_angle = 180
+set pid_process_denom = 2
+set osd_rssi_dbm_alarm = -90
+set osd_cap_alarm = 1000
+set osd_vbat_pos = 2534
+set osd_rssi_pos = 69
+set osd_link_quality_pos = 2102
+set osd_link_tx_power_pos = 2113
+set osd_rssi_dbm_pos = 2081
+set osd_tim_1_pos = 88
+set osd_tim_2_pos = 3526
+set osd_flymode_pos = 409
+set osd_throttle_pos = 377
+set osd_vtx_channel_pos = 2048
+set osd_current_pos = 3143
+set osd_mah_drawn_pos = 3177
+set osd_craft_name_pos = 567
+set osd_debug_pos = 4330
+set osd_warnings_pos = 14740
+set osd_avg_cell_voltage_pos = 2502
+set osd_disarmed_pos = 2422
+set osd_esc_tmp_pos = 1542
+set osd_core_temp_pos = 3558
+set osd_stat_bitmask = 8390308
+set osd_canvas_width = 50
+set osd_canvas_height = 18
+set vtx_band = 5
+set vtx_channel = 1
+set vtx_power = 2
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
+set vtx_freq = 5658
+set rpm_filter_harmonics = 2
+set craft_name = Crux35
+set pilot_name = w1llyFPV
+
+profile 0
+
+# profile 0
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set yaw_lowpass_hz = 0
+set p_pitch = 70
+set i_pitch = 126
+set d_pitch = 45
+set f_pitch = 187
+set p_roll = 67
+set i_roll = 120
+set f_roll = 180
+set p_yaw = 67
+set i_yaw = 120
+set f_yaw = 180
+set d_min_roll = 40
+set d_min_pitch = 45
+set thrust_linear = 20
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 10
+set simplified_master_multiplier = 150
+set simplified_d_gain = 90
+set simplified_dmax_gain = 0
+set simplified_dterm_filter_multiplier = 120
+set ez_landing_limit = 5
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 20
+set roll_expo = 76
+set pitch_expo = 76
+set yaw_expo = 64
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 80
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
