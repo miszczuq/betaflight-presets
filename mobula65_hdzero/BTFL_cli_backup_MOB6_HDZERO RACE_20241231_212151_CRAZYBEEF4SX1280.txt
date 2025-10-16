@@ -66,6 +66,7 @@ aux 7 35 0 1700 2100 1 0
 aux 8 35 2 1700 2100 1 0
 aux 9 49 0 1700 2100 1 0
 aux 10 49 2 900 1300 1 0
+aux 11 51 0 900 1675 0 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
@@ -87,15 +88,14 @@ vtxtable powerlabels 25 200 0
 
 # master
 set gyro_lpf1_static_hz = 0
-set dyn_notch_count = 1
-set dyn_notch_q = 600
-set dyn_notch_max_hz = 750
+set dyn_notch_count = 2
+set dyn_notch_q = 450
 set gyro_lpf1_dyn_min_hz = 0
-set gyro_lpf1_dyn_max_hz = 0
-set acc_trim_pitch = 35
-set acc_calibration = -78,66,45,1
+set acc_lpf_hz = 10
+set acc_calibration = -112,43,14,1
 set rc_smoothing_auto_factor = 25
 set rc_smoothing_auto_factor_throttle = 25
+set dshot_idle_value = 600
 set dshot_burst = OFF
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
@@ -106,57 +106,71 @@ set failsafe_recovery_delay = 20
 set align_board_roll = 180
 set align_board_yaw = 45
 set bat_capacity = 300
-set vbat_max_cell_voltage = 450
+set vbat_max_cell_voltage = 440
 set vbat_min_cell_voltage = 310
-set vbat_warning_cell_voltage = 320
 set yaw_motors_reversed = ON
 set small_angle = 180
 set pid_process_denom = 2
 set report_cell_voltage = ON
 set ledstrip_profile = BEACON
-set osd_warn_bitmask = 270207
-set osd_vbat_pos = 45
-set osd_rssi_pos = 33
-set osd_link_quality_pos = 7660
-set osd_rssi_dbm_pos = 5580
-set osd_tim_1_pos = 1068
-set osd_tim_2_pos = 6656
-set osd_flymode_pos = 7726
-set osd_g_force_pos = 65
-set osd_throttle_pos = 6592
-set osd_vtx_channel_pos = 6689
-set osd_crosshairs_pos = 4440
-set osd_ah_pos = 4313
-set osd_current_pos = 6624
-set osd_mah_drawn_pos = 7693
-set osd_craft_name_pos = 6706
-set osd_warnings_pos = 6515
-set osd_avg_cell_voltage_pos = 6166
-set osd_disarmed_pos = 6613
-set osd_esc_rpm_pos = 161
-set osd_core_temp_pos = 15789
-set osd_rate_profile_name_pos = 5670
+set osd_warn_bitmask = 8191
+set osd_cap_alarm = 1000
+set osd_vbat_pos = 514
+set osd_link_quality_pos = 15883
+set osd_rssi_dbm_pos = 15852
+set osd_tim_1_pos = 33
+set osd_tim_2_pos = 14405
+set osd_remaining_time_estimate_pos = 12326
+set osd_flymode_pos = 10806
+set osd_throttle_pos = 14821
+set osd_vtx_channel_pos = 3624
+set osd_crosshairs_pos = 12601
+set osd_ah_pos = 12474
+set osd_current_pos = 14852
+set osd_mah_drawn_pos = 14436
+set osd_craft_name_pos = 9770
+set osd_pilot_name_pos = 10327
+set osd_gps_speed_pos = 12613
+set osd_gps_lon_pos = 25132
+set osd_gps_lat_pos = 25122
+set osd_gps_sats_pos = 13315
+set osd_home_dir_pos = 12410
+set osd_home_dist_pos = 12376
+set osd_flight_dist_pos = 12581
+set osd_compass_bar_pos = 8214
+set osd_altitude_pos = 12549
+set osd_warnings_pos = 14741
+set osd_avg_cell_voltage_pos = 14885
+set osd_battery_usage_pos = 32773
+set osd_disarmed_pos = 14775
+set osd_flip_arrow_pos = 14682
+set osd_log_status_pos = 9230
+set osd_rate_profile_name_pos = 10811
+set osd_camera_frame_pos = 143
+set osd_efficiency_pos = 8695
+set osd_sys_bitrate_pos = 1452
+set osd_sys_delay_pos = 1484
+set osd_stat_bitmask = 2297448
+set osd_gps_sats_show_pdop = ON
 set osd_canvas_width = 50
 set osd_canvas_height = 18
 set debug_mode = RX_EXPRESSLRS_SPI
 set cpu_overclock = 120MHZ
 set vtx_band = 5
 set vtx_channel = 1
-set vtx_power = 2
+set vtx_power = 1
 set vtx_freq = 5658
 set gyro_1_sensor_align = DEFAULT
 set gyro_1_align_yaw = 0
 set expresslrs_uid = 118,82,212,58,1,20
-set expresslrs_rate_index = 1
 set cpu_late_limit_permille = 15
-set rpm_filter_harmonics = 1
-set rpm_filter_fade_range_hz = 120
 set craft_name = Mob6 FreestyleHD
 set pilot_name = Misza
 
 profile 0
 
 # profile 0
+set profile_name = karate
 set dterm_lpf1_dyn_min_hz = 67
 set dterm_lpf1_dyn_max_hz = 135
 set dterm_lpf1_dyn_expo = 7
@@ -195,9 +209,105 @@ set ez_landing_limit = 5
 
 profile 1
 
+# profile 1
+set profile_name = factory
+set vbat_sag_compensation = 100
+set p_pitch = 50
+set i_pitch = 68
+set d_pitch = 30
+set f_pitch = 101
+set p_roll = 53
+set i_roll = 72
+set d_roll = 31
+set f_roll = 108
+set p_yaw = 53
+set i_yaw = 72
+set f_yaw = 108
+set d_min_roll = 31
+set d_min_pitch = 30
+set thrust_linear = 20
+set simplified_i_gain = 75
+set simplified_d_gain = 105
+set simplified_pi_gain = 120
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 90
+set simplified_pitch_d_gain = 85
+set simplified_pitch_pi_gain = 90
+
 profile 2
 
+# profile 2
+set profile_name = UAV
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
+set vbat_sag_compensation = 100
+set anti_gravity_gain = 90
+set iterm_relax_cutoff = 5
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set yaw_lowpass_hz = 0
+set p_pitch = 70
+set i_pitch = 126
+set d_pitch = 71
+set f_pitch = 187
+set p_roll = 67
+set i_roll = 120
+set d_roll = 62
+set f_roll = 180
+set p_yaw = 67
+set i_yaw = 120
+set f_yaw = 180
+set d_min_roll = 62
+set d_min_pitch = 71
+set thrust_linear = 20
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 65
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 40
+set simplified_master_multiplier = 150
+set simplified_d_gain = 140
+set simplified_dmax_gain = 0
+set simplified_dterm_filter_multiplier = 120
+set ez_landing_limit = 5
+
 profile 3
+
+# profile 3
+set profile_name = Justice
+set vbat_sag_compensation = 50
+set iterm_relax_cutoff = 20
+set p_pitch = 71
+set i_pitch = 63
+set d_pitch = 67
+set f_pitch = 249
+set p_roll = 68
+set i_roll = 60
+set d_roll = 62
+set f_roll = 239
+set p_yaw = 68
+set i_yaw = 60
+set f_yaw = 239
+set d_min_roll = 62
+set d_min_pitch = 67
+set d_max_advance = 0
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 35
+set feedforward_jitter_factor = 4
+set feedforward_boost = 18
+set feedforward_max_rate_limit = 95
+set dyn_idle_min_rpm = 40
+set simplified_master_multiplier = 105
+set simplified_i_gain = 50
+set simplified_d_gain = 200
+set simplified_pi_gain = 145
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 190
+set simplified_pitch_d_gain = 95
+set tpa_breakpoint = 1250
+set ez_landing_limit = 5
 
 # restore original profile selection
 profile 2
@@ -207,6 +317,7 @@ rateprofile 0
 # rateprofile 0
 set rateprofile_name = Race533
 set thr_mid = 100
+set thr_expo = 30
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -221,6 +332,8 @@ rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Normal
+set thr_mid = 100
+set thr_expo = 30
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
 set yaw_rc_rate = 15
@@ -234,16 +347,18 @@ set yaw_srate = 70
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = Tricks
-set roll_rc_rate = 14
-set pitch_rc_rate = 14
-set yaw_rc_rate = 14
-set roll_expo = 50
-set pitch_expo = 50
-set yaw_expo = 50
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
+set rateprofile_name = Ciotti
+set thr_mid = 100
+set thr_expo = 30
+set roll_rc_rate = 10
+set pitch_rc_rate = 10
+set yaw_rc_rate = 10
+set roll_expo = 70
+set pitch_expo = 70
+set yaw_expo = 70
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 60
 
 rateprofile 3
 

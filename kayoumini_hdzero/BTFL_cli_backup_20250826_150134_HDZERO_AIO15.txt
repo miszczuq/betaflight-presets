@@ -1,0 +1,50 @@
+defaults nosave
+
+# diff all
+
+# version
+# Betaflight / STM32G47X (SG47) 4.5.2 Jun  4 2025 / 10:33:24 (024f8e13d) MSP API: 1.46
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name HDZERO_AIO15
+manufacturer_id HDZO
+mcu_id 004e0036414e500b20303635
+signature 
+
+# feature
+feature SERVO_TILT
+feature TELEMETRY
+feature OSD
+feature CHANNEL_FORWARDING
+
+# master
+set acc_calibration = 22,-7,-5,1
+
+profile 0
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration

@@ -1,10 +1,9 @@
 defaults nosave
 
-# diff all
 
 # version
-# Betaflight / STM32F411 (S411) 4.5.2 Apr  8 2025 / 20:01:42 (024f8e13d) MSP API: 1.46
-# config rev: 467f87b
+# Betaflight / STM32F411 (S411) 4.5.2 Mar 26 2025 / 15:08:04 (024f8e13d) MSP API: 1.46
+# config rev: 48588b7
 
 # start the command batch
 batch start
@@ -12,27 +11,26 @@ batch start
 # reset configuration to default settings
 defaults nosave
 
-board_name CRAZYBEEF4SX1280
-manufacturer_id HAMO
-mcu_id 0020003f333150152030374c
+board_name JHEF411HD
+manufacturer_id JHEF
+mcu_id 001a00323333510f32363532
 signature 
 
-# name: HDZtooth
+# name: TinyTrainerV2
 
 # resources
-resource MOTOR 1 B08
-resource MOTOR 2 B10
-resource MOTOR 3 B06
-resource MOTOR 4 B07
+resource SOFTSERIAL_TX 1 NONE
+resource PINIO 1 A15
 
 # feature
 feature -AIRMODE
+feature SOFTSERIAL
 feature TELEMETRY
 feature OSD
 
 # serial
 serial 0 131073 115200 57600 0 115200
-serial 1 128 115200 57600 0 2000000
+serial 30 0 115200 19200 0 19200
 
 # beeper
 beeper -DISARMING
@@ -60,11 +58,11 @@ aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
 aux 2 13 0 1700 2100 1 0
 aux 3 13 2 1300 1700 1 0
-aux 4 15 9 900 1300 0 0
-aux 5 28 1 1700 2100 0 0
-aux 6 28 1 900 1300 0 0
-aux 7 35 0 1700 2100 1 0
-aux 8 35 2 1700 2100 1 0
+aux 4 28 1 1700 2100 0 0
+aux 5 28 1 900 1300 0 0
+aux 6 35 0 1700 2100 1 0
+aux 7 35 2 1700 2100 1 0
+aux 8 40 7 900 1700 0 0
 aux 9 49 0 1700 2100 1 0
 aux 10 49 2 900 1300 1 0
 
@@ -81,42 +79,34 @@ vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
 vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
 vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
 vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
-vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 6 LOWBAND  L CUSTOM  5362 5399 5436 5473 5510 5547 5584 5621
 vtxtable powerlevels 3
 vtxtable powervalues 14 23 0
 vtxtable powerlabels 25 200 0
 
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_type = PT2
-set gyro_lpf2_static_hz = 0
+set dyn_notch_count = 1
 set dyn_notch_q = 500
 set dyn_notch_min_hz = 120
-set dyn_notch_max_hz = 500
-set acc_lpf_hz = 10
-set acc_trim_pitch = 36
-set acc_calibration = -32,19,-35,1
-set rc_smoothing_auto_factor = 52
+set dyn_notch_max_hz = 700
+set acc_trim_pitch = 65
+set acc_calibration = -10,33,1,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
 set blackbox_sample_rate = 1/2
-set blackbox_device = SERIAL
-set dshot_idle_value = 600
-set dshot_burst = OFF
+set dshot_idle_value = 700
 set dshot_bidir = ON
-set dshot_bitbang = AUTO
 set motor_poles = 12
-set motor_output_reordering = 2,1,0,3,4,5,6,7
-set failsafe_delay = 4
-set failsafe_recovery_delay = 20
-set align_board_yaw = 315
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 310
-set vbat_warning_cell_voltage = 320
+set vbat_min_cell_voltage = 340
+set ibata_scale = 133
+set ibata_offset = -357
 set yaw_motors_reversed = ON
 set small_angle = 180
-set deadband = 1
-set yaw_deadband = 1
 set pid_process_denom = 2
 set report_cell_voltage = ON
+set ledstrip_profile = BEACON
 set osd_warn_bitmask = 8191
 set osd_cap_alarm = 1000
 set osd_vbat_pos = 514
@@ -146,6 +136,7 @@ set osd_warnings_pos = 14741
 set osd_avg_cell_voltage_pos = 14885
 set osd_battery_usage_pos = 32773
 set osd_disarmed_pos = 14775
+set osd_nvario_pos = 234
 set osd_flip_arrow_pos = 14682
 set osd_log_status_pos = 9230
 set osd_rate_profile_name_pos = 10811
@@ -157,124 +148,143 @@ set osd_stat_bitmask = 2297448
 set osd_gps_sats_show_pdop = ON
 set osd_canvas_width = 50
 set osd_canvas_height = 18
-set debug_mode = FFT_FREQ
+set debug_mode = GYRO_SCALED
 set vtx_band = 5
 set vtx_channel = 1
-set vtx_power = 2
 set vtx_freq = 5658
-set gyro_1_sensor_align = DEFAULT
-set gyro_1_align_yaw = 0
-set expresslrs_uid = 118,82,212,58,1,20
-set craft_name = HDZtooth
+set pinio_box = 40,255,255,255
+set rpm_filter_weights = 100,20,100
+set rpm_filter_fade_range_hz = 100
+set craft_name = TinyTrainerV2
 set pilot_name = Misza
 
 profile 0
 
 # profile 0
-set profile_name = ryzu
-set dterm_lpf1_dyn_min_hz = 105
-set dterm_lpf1_dyn_max_hz = 210
-set dterm_lpf1_static_hz = 105
-set dterm_lpf2_static_hz = 210
+set profile_name = KARATE
+set dterm_lpf1_dyn_expo = 10
 set vbat_sag_compensation = 100
-set p_pitch = 85
-set i_pitch = 53
-set d_pitch = 43
-set f_pitch = 131
-set p_roll = 90
-set i_roll = 56
-set d_roll = 44
-set f_roll = 140
-set p_yaw = 90
-set i_yaw = 56
-set f_yaw = 140
-set d_min_roll = 44
-set d_min_pitch = 43
+set iterm_relax_cutoff = 45
+set iterm_limit = 500
+set pidsum_limit_yaw = 1000
+set throttle_boost = 7
+set p_pitch = 51
+set i_pitch = 106
+set d_pitch = 53
+set f_pitch = 162
+set p_roll = 49
+set i_roll = 101
+set d_roll = 49
+set f_roll = 156
+set p_yaw = 40
+set i_yaw = 82
+set f_yaw = 132
+set d_min_roll = 49
+set d_min_pitch = 53
+set d_max_advance = 0
 set launch_control_mode = PITCHONLY
 set launch_trigger_throttle_percent = 70
 set launch_angle_limit = 75
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
-set simplified_master_multiplier = 130
-set simplified_i_gain = 35
-set simplified_d_gain = 115
-set simplified_pi_gain = 155
+set dyn_idle_min_rpm = 60
+set dyn_idle_p_gain = 35
+set simplified_pids_mode = RP
+set simplified_i_gain = 115
+set simplified_d_gain = 165
+set simplified_pi_gain = 110
 set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 90
-set simplified_pitch_d_gain = 85
-set simplified_pitch_pi_gain = 90
-set simplified_dterm_filter_multiplier = 140
+set simplified_feedforward_gain = 130
+set simplified_pitch_d_gain = 95
+set tpa_rate = 70
+set tpa_breakpoint = 1250
+set ez_landing_limit = 5
 
 profile 1
 
 # profile 1
-set profile_name = Justice
-set iterm_relax_cutoff = 20
-set p_pitch = 112
-set i_pitch = 100
-set d_pitch = 81
-set f_pitch = 399
-set p_roll = 107
-set i_roll = 95
-set d_roll = 71
-set f_roll = 383
-set p_yaw = 107
-set i_yaw = 95
-set f_yaw = 383
-set d_min_roll = 71
-set d_min_pitch = 81
-set d_max_advance = 0
+set profile_name = KARA_TT
+set dterm_lpf1_dyn_expo = 10
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 45
+set iterm_limit = 500
+set pidsum_limit_yaw = 1000
+set throttle_boost = 7
+set p_pitch = 42
+set i_pitch = 86
+set d_pitch = 53
+set f_pitch = 137
+set p_roll = 40
+set i_roll = 82
+set d_roll = 49
+set f_roll = 132
+set d_min_roll = 49
+set d_min_pitch = 53
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 70
+set launch_angle_limit = 75
 set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 45
-set feedforward_jitter_factor = 8
-set feedforward_max_rate_limit = 95
-set dyn_idle_min_rpm = 50
-set simplified_master_multiplier = 160
-set simplified_i_gain = 50
-set simplified_d_gain = 150
-set simplified_pi_gain = 150
+set feedforward_smooth_factor = 65
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 60
+set dyn_idle_p_gain = 35
+set simplified_pids_mode = RP
+set simplified_i_gain = 115
+set simplified_d_gain = 165
+set simplified_pi_gain = 90
 set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 200
+set simplified_feedforward_gain = 110
+set simplified_pitch_d_gain = 95
+set tpa_rate = 70
 set tpa_breakpoint = 1250
+set ez_landing_limit = 5
 
 profile 2
 
 # profile 2
-set profile_name = Default
-set horizon_level_strength = 70
+set profile_name = KARA_TT
+set dterm_lpf1_dyn_expo = 10
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 45
+set iterm_limit = 500
+set pidsum_limit_yaw = 1000
+set throttle_boost = 7
+set p_pitch = 42
+set i_pitch = 86
+set d_pitch = 53
+set f_pitch = 137
+set p_roll = 40
+set i_roll = 82
+set d_roll = 49
+set f_roll = 132
+set d_min_roll = 49
+set d_min_pitch = 53
+set launch_control_mode = PITCHONLY
+set launch_trigger_throttle_percent = 70
+set launch_angle_limit = 75
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 65
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 60
+set dyn_idle_p_gain = 35
+set simplified_pids_mode = RP
+set simplified_i_gain = 115
+set simplified_d_gain = 165
+set simplified_pi_gain = 90
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 110
+set simplified_pitch_d_gain = 95
+set tpa_rate = 70
+set tpa_breakpoint = 1250
+set ez_landing_limit = 5
 
 profile 3
 
 # profile 3
-set profile_name = davey
-set vbat_sag_compensation = 100
-set pidsum_limit = 1000
-set p_pitch = 85
-set i_pitch = 153
-set d_pitch = 72
-set f_pitch = 227
-set p_roll = 86
-set i_roll = 153
-set d_roll = 69
-set f_roll = 230
-set p_yaw = 86
-set i_yaw = 153
-set f_yaw = 230
-set d_min_roll = 52
-set d_min_pitch = 53
-set d_max_gain = 0
-set d_max_advance = 0
-set thrust_linear = 25
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
-set dyn_idle_min_rpm = 35
-set simplified_master_multiplier = 120
-set simplified_d_gain = 145
-set simplified_pi_gain = 160
-set simplified_feedforward_gain = 160
-set simplified_pitch_d_gain = 90
-set simplified_pitch_pi_gain = 95
+set profile_name = Default
 
 # restore original profile selection
 profile 1
@@ -296,6 +306,22 @@ set yaw_srate = 53
 rateprofile 1
 
 # rateprofile 1
+set rateprofile_name = 533_90%
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
+set throttle_limit_type = SCALE
+set throttle_limit_percent = 90
+
+rateprofile 2
+
+# rateprofile 2
 set rateprofile_name = Normal
 set roll_rc_rate = 15
 set pitch_rc_rate = 15
@@ -306,20 +332,6 @@ set yaw_expo = 56
 set roll_srate = 70
 set pitch_srate = 70
 set yaw_srate = 70
-
-rateprofile 2
-
-# rateprofile 2
-set rateprofile_name = Tricks
-set roll_rc_rate = 22
-set pitch_rc_rate = 22
-set yaw_rc_rate = 22
-set roll_expo = 50
-set pitch_expo = 50
-set yaw_expo = 50
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
 
 rateprofile 3
 

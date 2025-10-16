@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F7X2 (S7X2) 4.5.1 Dec 22 2024 / 00:33:26 (77d01ba3b) MSP API: 1.46
-# config rev: 16ac022
+# Betaflight / STM32F7X2 (S7X2) 4.6.0 May 15 2025 / 14:37:43 (ad0c3ef97) MSP API: 1.47
+# config rev: 3377c6c
 
 # start the command batch
 batch start
@@ -26,10 +26,10 @@ feature LED_STRIP
 feature OSD
 
 # serial
-serial 0 1 115200 57600 0 115200
-serial 1 64 115200 57600 0 115200
-serial 2 131073 115200 57600 0 115200
-serial 4 2 115200 115200 0 115200
+serial UART1 1 115200 57600 0 115200
+serial UART2 64 115200 57600 0 115200
+serial UART3 131073 115200 57600 0 115200
+serial UART5 2 115200 115200 0 115200
 
 # beeper
 beeper -DISARMING
@@ -55,16 +55,18 @@ beacon RX_SET
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 46 4 1700 2100 0 0
-aux 3 13 0 1700 2100 1 0
-aux 4 13 2 1300 1700 1 0
-aux 5 15 9 900 1300 0 0
-aux 6 28 1 1700 2100 0 0
-aux 7 28 1 900 1300 0 0
-aux 8 35 0 1700 2100 1 0
-aux 9 35 2 1700 2100 1 0
-aux 10 49 0 1700 2100 1 0
-aux 11 49 2 900 1300 1 0
+aux 2 3 6 1700 2100 0 0
+aux 3 11 6 1300 2100 0 0
+aux 4 46 4 1700 2100 0 0
+aux 5 13 0 1700 2100 1 0
+aux 6 13 2 1300 1700 1 0
+aux 7 15 9 900 1300 0 0
+aux 8 28 1 1700 2100 0 0
+aux 9 28 1 900 1300 0 0
+aux 10 35 0 1700 2100 1 0
+aux 11 35 2 1700 2100 1 0
+aux 12 49 0 1700 2100 1 0
+aux 13 49 2 900 1300 1 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
@@ -73,59 +75,102 @@ adjrange 2 0 8 900 2100 30 8 0 0
 
 # rxfail
 rxfail 3 s 1400
-rxfail 5 s 1500
+rxfail 5 s 1000
 
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_static_hz = 800
-set dyn_notch_count = 0
-set dyn_notch_q = 400
-set dyn_notch_min_hz = 90
-set dyn_notch_max_hz = 800
+set gyro_lpf2_static_hz = 750
+set dyn_notch_count = 2
+set dyn_notch_q = 450
 set gyro_lpf1_dyn_min_hz = 0
-set gyro_lpf1_dyn_max_hz = 0
-set acc_calibration = 19,-34,-23,1
+set acc_calibration = -8,-16,-11,1
+set align_mag = CUSTOM
+set mag_align_roll = -250
+set mag_align_pitch = 1800
+set mag_align_yaw = 1800
 set rc_smoothing_auto_factor = 52
+set blackbox_sample_rate = 1/2
+set blackbox_disable_bat = ON
+set blackbox_disable_rssi = ON
+set blackbox_disable_motors = ON
+set blackbox_disable_rpm = ON
 set dshot_bidir = ON
 set failsafe_throttle_low_delay = 300
 set failsafe_procedure = GPS-RESCUE
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
 set vbat_scale = 111
 set yaw_motors_reversed = ON
 set small_angle = 180
+set mag_declination = 70
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
+set gps_set_home_point_once = ON
 set gps_rescue_alt_mode = CURRENT_ALT
 set gps_rescue_initial_climb = 40
 set gps_rescue_return_alt = 50
 set gps_rescue_ground_speed = 1300
 set gps_rescue_min_sats = 6
 set gps_rescue_allow_arming_without_fix = ON
-set pid_process_denom = 6
-set simplified_gyro_filter_multiplier = 160
+set alt_hold_deadband = 50
+set pos_hold_deadband = 10
+set pid_process_denom = 2
+set simplified_gyro_filter_multiplier = 150
 set report_cell_voltage = ON
 set ledstrip_profile = BEACON
-set osd_vbat_pos = 2145
-set osd_rssi_pos = 2593
-set osd_tim_1_pos = 2647
-set osd_flymode_pos = 3072
-set osd_mah_drawn_pos = 2616
-set osd_gps_lon_pos = 2048
-set osd_gps_lat_pos = 3080
-set osd_gps_sats_pos = 2561
-set osd_home_dir_pos = 2170
-set osd_home_dist_pos = 2064
-set osd_altitude_pos = 18456
-set osd_avg_cell_voltage_pos = 2113
-set osd_disarmed_pos = 2421
-set osd_rate_profile_name_pos = 2081
-set rpm_filter_q = 1000
-set rpm_filter_fade_range_hz = 100
+set osd_warn_bitmask = 8191
+set osd_cap_alarm = 1000
+set osd_vbat_pos = 514
+set osd_link_quality_pos = 15883
+set osd_rssi_dbm_pos = 15852
+set osd_tim_1_pos = 33
+set osd_tim_2_pos = 14405
+set osd_remaining_time_estimate_pos = 12326
+set osd_flymode_pos = 14966
+set osd_throttle_pos = 14821
+set osd_crosshairs_pos = 14649
+set osd_ah_pos = 8378
+set osd_current_pos = 14852
+set osd_mah_drawn_pos = 14436
+set osd_craft_name_pos = 9834
+set osd_pilot_name_pos = 9828
+set osd_gps_speed_pos = 12613
+set osd_gps_lon_pos = 25196
+set osd_gps_lat_pos = 25186
+set osd_gps_sats_pos = 13315
+set osd_home_dir_pos = 12410
+set osd_home_dist_pos = 12376
+set osd_flight_dist_pos = 12581
+set osd_compass_bar_pos = 8214
+set osd_altitude_pos = 12549
+set osd_warnings_pos = 14741
+set osd_avg_cell_voltage_pos = 14885
+set osd_battery_usage_pos = 32773
+set osd_disarmed_pos = 14775
+set osd_nvario_pos = 234
+set osd_flip_arrow_pos = 14682
+set osd_log_status_pos = 9230
+set osd_rate_profile_name_pos = 14971
+set osd_camera_frame_pos = 143
+set osd_efficiency_pos = 12791
+set osd_sys_bitrate_pos = 1452
+set osd_sys_delay_pos = 1484
+set osd_stat_bitmask = 2297448
+set osd_gps_sats_show_pdop = ON
+set osd_displayport_device = AUTO
+set debug_mode = AUTOPILOT_POSITION
 set craft_name = Apex D
 set pilot_name = Misza
+set altitude_prefer_baro = 60
+set ap_hover_throttle = 1300
+set ap_altitude_p = 30
+set ap_position_i = 20
+set ap_position_d = 40
 
 profile 0
 
 # profile 0
+set profile_name = Factory
 set dterm_lpf1_dyn_min_hz = 0
 set dterm_lpf1_dyn_max_hz = 0
 set dterm_lpf1_dyn_expo = 0
@@ -143,15 +188,13 @@ set f_roll = 118
 set p_yaw = 54
 set i_yaw = 82
 set f_yaw = 118
-set d_min_roll = 33
-set d_min_pitch = 37
 set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
+set simplified_pids_mode = OFF
 set simplified_master_multiplier = 110
 set simplified_i_gain = 85
 set simplified_pi_gain = 110
-set simplified_dmax_gain = 0
 set simplified_feedforward_gain = 90
 set simplified_pitch_pi_gain = 105
 set simplified_dterm_filter_multiplier = 140
@@ -159,18 +202,48 @@ set ez_landing_limit = 5
 
 profile 1
 
+# profile 1
+set profile_name = UAV
+set iterm_windup = 85
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set p_pitch = 69
+set i_pitch = 124
+set d_pitch = 45
+set f_pitch = 219
+set p_roll = 66
+set i_roll = 118
+set d_roll = 40
+set f_roll = 210
+set p_yaw = 66
+set i_yaw = 118
+set f_yaw = 210
+set d_max_roll = 54
+set d_max_pitch = 62
+set thrust_linear = 20
+set dyn_idle_min_rpm = 35
+set simplified_master_multiplier = 135
+set simplified_pi_gain = 110
+set simplified_feedforward_gain = 130
+set ez_landing_limit = 5
+
 profile 2
+
+# profile 2
+set profile_name = Default
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 8
 
 profile 3
 
 # restore original profile selection
-profile 0
+profile 1
 
 rateprofile 0
 
 # rateprofile 0
 set rateprofile_name = Race533
-set thr_mid = 100
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -185,14 +258,29 @@ rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = Normal
-set roll_rc_rate = 4
-set pitch_rc_rate = 4
-set yaw_rc_rate = 4
-set roll_srate = 40
-set pitch_srate = 40
-set yaw_srate = 40
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 15
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
 
 rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = Tricks
+set roll_rc_rate = 14
+set pitch_rc_rate = 14
+set yaw_rc_rate = 14
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 90
 
 rateprofile 3
 

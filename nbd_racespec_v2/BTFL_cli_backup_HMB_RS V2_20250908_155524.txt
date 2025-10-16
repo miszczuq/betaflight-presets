@@ -1,0 +1,242 @@
+defaults nosave
+
+
+# version
+# Betaflight / HUMMINGBIRD_RS_V2 (Hummingbird Whoop RaceSpec V2) 4.5.1 Apr 25 2025 / 14:33:20 (0fe123aac) MSP API: 1.46
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+mcu_id 204822591d0500000dec171b
+signature 
+
+# name: HMB RS V2
+
+# feature
+feature -SERVO_TILT
+feature -CHANNEL_FORWARDING
+feature -AIRMODE
+
+# aux
+aux 0 0 3 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 15 9 900 1300 0 0
+aux 5 28 1 1700 2100 0 0
+aux 6 28 1 900 1300 0 0
+aux 7 35 0 1700 2100 1 0
+aux 8 35 2 1700 2100 1 0
+aux 9 49 0 1700 2100 1 0
+aux 10 49 2 900 1300 1 0
+
+# adjrange
+adjrange 0 0 2 900 2100 12 2 0 0
+adjrange 1 0 5 900 2100 29 5 0 0
+adjrange 2 0 8 900 2100 30 8 0 0
+
+# master
+set dyn_notch_count = 1
+set dyn_notch_q = 600
+set gyro_lpf1_dyn_max_hz = 0
+set acc_calibration = 21,2,-22,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
+set motor_kv = 1960
+set dshot_idle_value = 1000
+set motor_pwm_protocol = DSHOT300
+set vbat_max_cell_voltage = 445
+set pid_process_denom = 2
+set report_cell_voltage = ON
+set ledstrip_profile = BEACON
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 450
+set osd_core_temp_alarm = 70
+set osd_tim1 = 1
+set osd_tim2 = 2
+set osd_vbat_pos = 341
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2423
+set osd_rssi_dbm_pos = 2391
+set osd_tim_1_pos = 2433
+set osd_tim_2_pos = 139
+set osd_flymode_pos = 2440
+set osd_throttle_pos = 2081
+set osd_vtx_channel_pos = 2453
+set osd_crosshairs_pos = 2253
+set osd_ah_pos = 2126
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2369
+set osd_craft_name_pos = 394
+set osd_warnings_pos = 2345
+set osd_avg_cell_voltage_pos = 2404
+set osd_disarmed_pos = 2314
+set osd_esc_rpm_pos = 161
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2105
+set osd_rate_profile_name_pos = 2445
+set osd_stat_bitmask = 813696742
+set osd_displayport_device = AUTO
+set osd_canvas_width = 30
+set osd_canvas_height = 13
+set vtx_band = 5
+set vtx_channel = 1
+set vtx_power = 3
+set vtx_freq = 5658
+set vcd_video_system = NTSC
+set cpu_late_limit_permille = 15
+set rpm_filter_fade_range_hz = 120
+
+profile 0
+
+# profile 0
+set profile_name = STOCK
+set feedforward_smooth_factor = 35
+set feedforward_jitter_factor = 4
+set feedforward_boost = 18
+
+profile 1
+
+# profile 1
+set profile_name = QUAD66
+set vbat_sag_compensation = 100
+set p_pitch = 56
+set i_pitch = 100
+set d_pitch = 48
+set f_pitch = 149
+set d_roll = 35
+set d_min_roll = 35
+set d_min_pitch = 48
+set thrust_linear = 20
+set simplified_d_gain = 120
+set simplified_dmax_gain = 0
+set simplified_pitch_d_gain = 120
+set simplified_pitch_pi_gain = 120
+
+profile 2
+
+# profile 2
+set profile_name = UAV
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
+set vbat_sag_compensation = 100
+set anti_gravity_gain = 90
+set iterm_relax_cutoff = 5
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set yaw_lowpass_hz = 125
+set p_pitch = 75
+set i_pitch = 134
+set d_pitch = 76
+set f_pitch = 199
+set p_roll = 71
+set i_roll = 127
+set d_roll = 67
+set f_roll = 191
+set p_yaw = 71
+set i_yaw = 127
+set f_yaw = 191
+set d_min_roll = 67
+set d_min_pitch = 76
+set thrust_linear = 20
+set dyn_idle_min_rpm = 40
+set simplified_master_multiplier = 160
+set simplified_d_gain = 140
+set simplified_dmax_gain = 0
+set simplified_dterm_filter_multiplier = 120
+set ez_landing_limit = 5
+
+profile 3
+
+# profile 3
+set profile_name = Karate
+set dterm_lpf1_dyn_min_hz = 67
+set dterm_lpf1_dyn_max_hz = 135
+set dterm_lpf1_dyn_expo = 7
+set dterm_lpf1_static_hz = 67
+set dterm_lpf2_static_hz = 135
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 45
+set p_pitch = 44
+set i_pitch = 87
+set d_pitch = 38
+set f_pitch = 143
+set p_roll = 42
+set i_roll = 83
+set d_roll = 32
+set f_roll = 138
+set d_min_roll = 25
+set d_min_pitch = 30
+set thrust_linear = 20
+set dyn_idle_min_rpm = 120
+set dyn_idle_p_gain = 35
+set dyn_idle_start_increase = 60
+set simplified_pids_mode = RP
+set simplified_i_gain = 110
+set simplified_d_gain = 85
+set simplified_pi_gain = 95
+set simplified_dmax_gain = 80
+set simplified_feedforward_gain = 115
+set simplified_pitch_d_gain = 105
+set simplified_dterm_filter_multiplier = 90
+set ez_landing_limit = 5
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = Race533
+set thr_mid = 100
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = Normal
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 15
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = Tricks
+set roll_rc_rate = 14
+set pitch_rc_rate = 14
+set yaw_rc_rate = 14
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 90
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
