@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F411 (F411) 2025.12.0-RC1 Oct  6 2025 / 14:30:14 (ae6b7a275) MSP API: 1.47
-# config rev: 247ea10
+# Betaflight / STM32F411 (F411) 2025.12.0-RC2 Oct 21 2025 / 22:06:32 (9c1a6bfab) MSP API: 1.47
+# config rev: c940ae8
 
 # start the command batch
 batch start
@@ -51,25 +51,18 @@ beeper -CAM_CONNECTION_CLOSE
 
 # beacon
 beacon RX_LOST
-beacon RX_SET
 
 # aux
 aux 0 0 3 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
 aux 2 13 0 1700 2100 1 0
-aux 3 13 2 1300 1700 1 0
-aux 4 15 9 900 1300 0 0
-aux 5 28 1 1700 2100 0 0
-aux 6 28 1 900 1300 0 0
-aux 7 35 0 1700 2100 1 0
-aux 8 35 2 1700 2100 1 0
-aux 9 49 0 1700 2100 1 0
-aux 10 49 2 900 1300 1 0
-aux 11 51 0 900 1675 0 0
+aux 3 15 9 900 1300 0 0
+aux 4 28 1 1700 2100 0 0
+aux 5 28 1 900 1300 0 0
+aux 6 35 5 1700 2100 0 0
 
 # adjrange
 adjrange 0 0 2 900 2100 12 2 0 0
-adjrange 1 0 5 900 2100 29 5 0 0
 adjrange 2 0 8 900 2100 30 8 0 0
 
 # vtxtable
@@ -96,24 +89,23 @@ set dyn_notch_count = 2
 set dyn_notch_q = 450
 set gyro_lpf1_dyn_min_hz = 0
 set acc_lpf_hz = 10
-set acc_calibration = 8,-1,11,1
+set acc_calibration = -66,13,35,1
 set rc_smoothing_auto_factor = 25
 set rc_smoothing_auto_factor_throttle = 25
 set dshot_burst = OFF
 set dshot_bidir = ON
 set dshot_bitbang = AUTO
 set motor_poles = 12
-set motor_output_reordering = 0,3,2,1,4,5,6,7
+set motor_output_reordering = 2,0,1,3,4,5,6,7
 set failsafe_delay = 4
 set failsafe_recovery_delay = 20
 set align_board_roll = 180
-set align_board_yaw = 135
+set align_board_yaw = 45
 set bat_capacity = 300
 set vbat_max_cell_voltage = 440
 set vbat_min_cell_voltage = 310
 set yaw_motors_reversed = ON
-set crashflip_rate = 50
-set small_angle = 180
+set crashflip_rate = 125
 set pid_process_denom = 2
 set report_cell_voltage = ON
 set ledstrip_profile = BEACON
@@ -159,9 +151,9 @@ set osd_gps_sats_show_pdop = ON
 set debug_mode = RX_EXPRESSLRS_SPI
 set cpu_overclock = 120MHZ
 set vtx_band = 5
-set vtx_channel = 1
-set vtx_power = 3
-set vtx_freq = 5658
+set vtx_channel = 8
+set vtx_power = 1
+set vtx_freq = 5917
 set expresslrs_uid = 118,82,212,58,1,20
 set cpu_late_limit_permille = 15
 set craft_name = Mob6 FreestyleHD
@@ -247,25 +239,25 @@ set iterm_relax_cutoff = 5
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
 set yaw_lowpass_hz = 0
-set p_pitch = 70
-set i_pitch = 126
-set d_pitch = 71
-set f_pitch = 187
-set p_roll = 67
-set i_roll = 120
-set d_roll = 62
-set f_roll = 180
+set p_pitch = 65
+set i_pitch = 117
+set d_pitch = 66
+set f_pitch = 175
+set p_roll = 63
+set i_roll = 112
+set d_roll = 58
+set f_roll = 168
 set p_yaw = 67
 set i_yaw = 120
 set f_yaw = 180
-set d_max_roll = 84
-set d_max_pitch = 96
+set d_max_roll = 78
+set d_max_pitch = 90
 set thrust_linear = 20
 set feedforward_jitter_factor = 3
 set feedforward_boost = 18
 set dyn_idle_min_rpm = 40
 set simplified_pids_mode = RP
-set simplified_master_multiplier = 150
+set simplified_master_multiplier = 140
 set simplified_d_gain = 140
 set simplified_dterm_filter_multiplier = 120
 set ez_landing_limit = 5
@@ -311,6 +303,24 @@ profile 2
 rateprofile 0
 
 # rateprofile 0
+set rateprofile_name = 533_ASYM
+set thr_mid = 100
+set thr_expo = 25
+set thr_hover = 100
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 51
+set pitch_expo = 50
+set yaw_expo = 25
+set roll_srate = 53
+set pitch_srate = 50
+set yaw_srate = 40
+set throttle_limit_type = SCALE
+
+rateprofile 1
+
+# rateprofile 1
 set rateprofile_name = 533
 set thr_mid = 100
 set thr_expo = 25
@@ -324,10 +334,11 @@ set yaw_expo = 56
 set roll_srate = 53
 set pitch_srate = 53
 set yaw_srate = 53
+set throttle_limit_type = SCALE
 
-rateprofile 1
+rateprofile 2
 
-# rateprofile 1
+# rateprofile 2
 set rateprofile_name = 633
 set thr_mid = 100
 set thr_expo = 25
@@ -341,23 +352,6 @@ set yaw_expo = 62
 set roll_srate = 64
 set pitch_srate = 64
 set yaw_srate = 64
-
-rateprofile 2
-
-# rateprofile 2
-set rateprofile_name = FS900
-set thr_mid = 100
-set thr_expo = 25
-set thr_hover = 100
-set roll_rc_rate = 16
-set pitch_rc_rate = 16
-set yaw_rc_rate = 16
-set roll_expo = 80
-set pitch_expo = 80
-set yaw_expo = 80
-set roll_srate = 90
-set pitch_srate = 90
-set yaw_srate = 90
 
 rateprofile 3
 
