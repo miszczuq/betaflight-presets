@@ -1,5 +1,3 @@
-defaults nosave
-
 
 # version
 # Betaflight / STM32G47X (SG47) 4.5.0 Dec  8 2023 / 12:04:40 (b2ce40263) MSP API: 1.46
@@ -16,7 +14,34 @@ mcu_id 0024004a5446500f20363831
 signature 
 
 # feature
+feature -AIRMODE
+feature TELEMETRY
 feature OSD
+
+# serial
+serial 0 131073 115200 57600 0 115200
+serial 1 64 115200 57600 0 115200
+
+# beeper
+beeper -DISARMING
+beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
+beeper -BAT_LOW
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
 
 # led
 led 0 0,0::C:1
@@ -28,13 +53,189 @@ led 5 5,0::C:1
 led 6 6,0::C:1
 led 7 7,0::C:1
 
+# aux
+aux 0 0 3 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 13 0 1700 2100 1 0
+aux 3 13 2 1300 1700 1 0
+aux 4 15 9 900 1300 0 0
+aux 5 28 1 1700 2100 0 0
+aux 6 28 1 900 1300 0 0
+aux 7 35 0 1700 2100 1 0
+aux 8 35 2 1700 2100 1 0
+aux 9 49 0 1700 2100 1 0
+aux 10 49 2 900 1300 1 0
+
+# adjrange
+adjrange 0 0 2 900 2100 12 2 0 0
+adjrange 1 0 5 900 2100 29 5 0 0
+adjrange 2 0 8 900 2100 30 8 0 0
+
+# vtxtable
+vtxtable bands 6
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
+vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
+vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable band 6 LOWBAND  L CUSTOM  5362 5399 5436 5473 5510 5547 5584 5621
+vtxtable powerlevels 3
+vtxtable powervalues 14 23 0
+vtxtable powerlabels 25 200 0
+
+# vtx
+vtx 0 4 0 0 3 900 1300
+vtx 1 4 0 0 1 1300 1700
+vtx 2 4 0 0 2 1700 2100
+
 # master
+set gyro_lpf1_static_hz = 0
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set dyn_notch_min_hz = 120
+set dyn_notch_max_hz = 700
+set acc_trim_pitch = 12
 set acc_calibration = 98,-12,64,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
 set serialrx_provider = CRSF
-set osd_canvas_width = 30
-set osd_canvas_height = 13
+set dshot_idle_value = 700
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
+set motor_poles = 12
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
+set yaw_motors_reversed = ON
+set small_angle = 180
+set report_cell_voltage = ON
+set ledstrip_profile = BEACON
+set osd_cap_alarm = 1000
+set osd_vbat_pos = 482
+set osd_rssi_pos = 341
+set osd_link_quality_pos = 14845
+set osd_link_tx_power_pos = 341
+set osd_rssi_dbm_pos = 14845
+set osd_rsnr_pos = 341
+set osd_tim_1_pos = 33
+set osd_tim_2_pos = 14405
+set osd_remaining_time_estimate_pos = 12326
+set osd_flymode_pos = 10742
+set osd_anti_gravity_pos = 341
+set osd_g_force_pos = 341
+set osd_throttle_pos = 14821
+set osd_vtx_channel_pos = 341
+set osd_crosshairs_pos = 12601
+set osd_ah_sbar_pos = 313
+set osd_ah_pos = 12474
+set osd_current_pos = 14820
+set osd_mah_drawn_pos = 14436
+set osd_wh_drawn_pos = 341
+set osd_motor_diag_pos = 341
+set osd_craft_name_pos = 8701
+set osd_pilot_name_pos = 8701
+set osd_gps_speed_pos = 12613
+set osd_gps_lon_pos = 25068
+set osd_gps_lat_pos = 25058
+set osd_gps_sats_pos = 12317
+set osd_home_dir_pos = 12410
+set osd_home_dist_pos = 12376
+set osd_flight_dist_pos = 12581
+set osd_compass_bar_pos = 8214
+set osd_altitude_pos = 12549
+set osd_pid_roll_pos = 341
+set osd_pid_pitch_pos = 341
+set osd_pid_yaw_pos = 341
+set osd_debug_pos = 341
+set osd_power_pos = 341
+set osd_pidrate_profile_pos = 341
+set osd_warnings_pos = 14741
+set osd_avg_cell_voltage_pos = 14821
+set osd_pit_ang_pos = 341
+set osd_rol_ang_pos = 341
+set osd_battery_usage_pos = 32773
+set osd_disarmed_pos = 14775
+set osd_nheading_pos = 341
+set osd_up_down_reference_pos = 312
+set osd_ready_mode_pos = 341
+set osd_esc_tmp_pos = 341
+set osd_esc_rpm_pos = 341
+set osd_esc_rpm_freq_pos = 341
+set osd_rtc_date_time_pos = 341
+set osd_adjustment_range_pos = 341
+set osd_flip_arrow_pos = 14682
+set osd_core_temp_pos = 341
+set osd_log_status_pos = 8221
+set osd_stick_overlay_left_pos = 341
+set osd_stick_overlay_right_pos = 341
+set osd_rate_profile_name_pos = 10747
+set osd_pid_profile_name_pos = 341
+set osd_profile_name_pos = 341
+set osd_rcchannels_pos = 341
+set osd_camera_frame_pos = 143
+set osd_efficiency_pos = 8695
+set osd_total_flights_pos = 341
+set osd_aux_pos = 341
+set osd_sys_goggle_voltage_pos = 341
+set osd_sys_vtx_voltage_pos = 341
+set osd_sys_bitrate_pos = 445
+set osd_sys_delay_pos = 477
+set osd_sys_distance_pos = 341
+set osd_sys_lq_pos = 341
+set osd_sys_goggle_dvr_pos = 341
+set osd_sys_vtx_dvr_pos = 341
+set osd_sys_warnings_pos = 341
+set osd_sys_vtx_temp_pos = 341
+set osd_sys_fan_speed_pos = 341
+set osd_stat_bitmask = 2297448
+set osd_displayport_device = MSP
+set osd_canvas_width = 50
+set osd_canvas_height = 18
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 1
+set vtx_freq = 5917
+set vcd_video_system = HD
+set displayport_msp_fonts = 0,0,0,0
+set rpm_filter_weights = 100,20,100
+set rpm_filter_fade_range_hz = 100
+set pilot_name = Misza
 
 profile 0
+
+# profile 0
+set profile_name = TT_KARAT
+set dterm_lpf1_dyn_expo = 10
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 45
+set iterm_limit = 500
+set pidsum_limit_yaw = 1000
+set throttle_boost = 7
+set p_pitch = 42
+set i_pitch = 86
+set d_pitch = 53
+set f_pitch = 137
+set p_roll = 40
+set i_roll = 82
+set d_roll = 49
+set f_roll = 132
+set d_min_roll = 49
+set d_min_pitch = 53
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 65
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 60
+set dyn_idle_p_gain = 35
+set simplified_pids_mode = RP
+set simplified_i_gain = 115
+set simplified_d_gain = 165
+set simplified_pi_gain = 90
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 110
+set simplified_pitch_d_gain = 95
+set tpa_rate = 70
+set tpa_breakpoint = 1250
 
 profile 1
 
@@ -47,9 +248,46 @@ profile 0
 
 rateprofile 0
 
+# rateprofile 0
+set rateprofile_name = Race533
+set thr_mid = 100
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
+
 rateprofile 1
 
+# rateprofile 1
+set rateprofile_name = Normal
+set roll_rc_rate = 15
+set pitch_rc_rate = 15
+set yaw_rc_rate = 15
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
 rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = Tricks
+set roll_rc_rate = 14
+set pitch_rc_rate = 14
+set yaw_rc_rate = 14
+set roll_expo = 50
+set pitch_expo = 50
+set yaw_expo = 50
+set roll_srate = 90
+set pitch_srate = 90
+set yaw_srate = 90
 
 rateprofile 3
 
@@ -57,3 +295,4 @@ rateprofile 3
 rateprofile 0
 
 # save configuration
+save

@@ -1,9 +1,7 @@
-defaults nosave
-
 
 # version
-# Betaflight / STM32F411 (F411) 2025.12.0-RC2 Oct 21 2025 / 22:06:32 (9c1a6bfab) MSP API: 1.47
-# config rev: c940ae8
+# Betaflight / STM32F411 (F411) 2025.12.0-beta Dec  6 2025 / 11:56:24 (f02ea47ca) MSP API: 1.47
+# config rev: 96002a1
 
 # start the command batch
 batch start
@@ -152,7 +150,7 @@ set debug_mode = RX_EXPRESSLRS_SPI
 set cpu_overclock = 120MHZ
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 1
+set vtx_power = 3
 set vtx_freq = 5917
 set expresslrs_uid = 118,82,212,58,1,20
 set cpu_late_limit_permille = 15
@@ -356,6 +354,7 @@ set yaw_srate = 64
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 2
+rateprofile 0
 
 # save configuration
+save

@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F411 (S411) 4.5.2 Apr  8 2025 / 20:01:42 (024f8e13d) MSP API: 1.46
-# config rev: 467f87b
+# Betaflight / STM32G47X (G473) 2025.12.1 Dec 30 2025 / 13:27:24 (85d201376) MSP API: 1.47
+# config rev: 46f5576
 
 # start the command batch
 batch start
@@ -11,26 +11,24 @@ batch start
 # reset configuration to default settings
 defaults nosave
 
-board_name CRAZYBEEF4SX1280
-manufacturer_id HAMO
-mcu_id 003b000d3533511037393932
+board_name TAKERG4AIO
+manufacturer_id GEPR
+mcu_id 0024004a5446500f20363831
 signature 
 
-# name: Mob6 FreestyleHD
-
 # resources
-resource MOTOR 1 B08
-resource MOTOR 2 B10
-resource MOTOR 3 B06
-resource MOTOR 4 B07
+resource SERIAL_TX 4 NONE
+resource PINIO 1 C10
 
 # feature
 feature -AIRMODE
 feature TELEMETRY
+feature LED_STRIP
 feature OSD
 
 # serial
-serial 0 131073 115200 57600 0 115200
+serial UART1 131073 115200 57600 0 115200
+serial UART2 64 115200 57600 0 115200
 
 # beeper
 beeper -DISARMING
@@ -47,24 +45,29 @@ beeper -ON_USB
 beeper -BLACKBOX_ERASE
 beeper -CAM_CONNECTION_OPEN
 beeper -CAM_CONNECTION_CLOSE
-beeper -RC_SMOOTHING_INIT_FAIL
 
 # beacon
 beacon RX_LOST
-beacon RX_SET
+
+# led
+led 0 0,0::C:1
+led 1 1,0::C:1
+led 2 2,0::C:1
+led 3 3,0::C:1
+led 4 4,0::C:1
+led 5 5,0::C:1
+led 6 6,0::C:1
+led 7 7,0::C:1
 
 # aux
-aux 0 0 3 1700 2100 0 0
+aux 0 0 0 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 13 6 1700 2100 1 0
-aux 3 28 1 1700 2100 0 0
-aux 4 28 1 900 1300 0 0
-aux 5 35 0 1700 2100 1 0
-
-# adjrange
-adjrange 0 0 2 900 2100 12 2 0 0
-adjrange 1 0 5 900 2100 29 5 0 0
-adjrange 2 0 8 900 2100 30 8 0 0
+aux 2 13 1 1950 2025 0 0
+aux 3 13 1 1550 1600 0 0
+aux 4 13 1 1125 1200 0 0
+aux 5 28 1 1700 2100 0 0
+aux 6 35 5 1700 2100 1 0
+aux 7 40 3 1700 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -74,46 +77,35 @@ vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
 vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
 vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
 vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
-vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
+vtxtable band 6 LOWBAND  L CUSTOM  5362 5399 5436 5473 5510 5547 5584 5621
 vtxtable powerlevels 3
 vtxtable powervalues 14 23 0
 vtxtable powerlabels 25 200 0
 
 # vtx
-vtx 0 4 0 0 3 900 1300
-vtx 1 4 0 0 1 1300 1700
-vtx 2 4 0 0 1 1700 2100
+vtx 0 7 0 0 3 900 1100
+vtx 1 7 0 0 2 1300 1700
+vtx 2 7 0 0 1 1900 2100
 
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_static_hz = 1000
 set dyn_notch_count = 1
 set dyn_notch_q = 500
-set dyn_notch_min_hz = 150
-set gyro_lpf1_dyn_min_hz = 0
-set gyro_lpf1_dyn_max_hz = 0
-set acc_trim_pitch = 75
-set acc_calibration = -78,66,45,1
+set dyn_notch_min_hz = 120
+set dyn_notch_max_hz = 700
+set acc_trim_pitch = 12
+set acc_calibration = 98,-12,64,1
 set rc_smoothing_auto_factor = 25
 set rc_smoothing_auto_factor_throttle = 25
-set dshot_burst = OFF
 set dshot_bidir = ON
-set dshot_bitbang = AUTO
+set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
-set motor_output_reordering = 0,3,2,1,4,5,6,7
-set failsafe_delay = 4
-set failsafe_recovery_delay = 20
-set align_board_roll = 180
-set align_board_yaw = 45
-set bat_capacity = 300
 set vbat_max_cell_voltage = 450
-set vbat_min_cell_voltage = 310
-set vbat_warning_cell_voltage = 320
+set vbat_min_cell_voltage = 340
 set yaw_motors_reversed = ON
-set small_angle = 180
-set pid_process_denom = 2
-set simplified_gyro_filter = OFF
+set crashflip_rate = 50
 set report_cell_voltage = ON
+set ledstrip_profile = BEACON
 set osd_warn_bitmask = 8191
 set osd_cap_alarm = 1000
 set osd_vbat_pos = 514
@@ -153,92 +145,48 @@ set osd_sys_bitrate_pos = 1452
 set osd_sys_delay_pos = 1484
 set osd_stat_bitmask = 2297448
 set osd_gps_sats_show_pdop = ON
-set osd_canvas_width = 50
-set osd_canvas_height = 18
-set debug_mode = RX_EXPRESSLRS_SPI
-set cpu_overclock = 120MHZ
 set vtx_band = 5
 set vtx_channel = 8
-set vtx_power = 1
+set vtx_power = 3
 set vtx_freq = 5917
-set gyro_1_sensor_align = DEFAULT
-set gyro_1_align_yaw = 0
-set expresslrs_uid = 118,82,212,58,1,20
-set expresslrs_switch_mode = HYBRID
-set cpu_late_limit_permille = 15
-set rpm_filter_harmonics = 1
-set craft_name = Mob6 FreestyleHD
+set pinio_box = 40,255,255,255
+set rpm_filter_weights = 100,20,100
+set rpm_filter_fade_range_hz = 100
 set pilot_name = Misza
 
 profile 0
 
 # profile 0
-set profile_name = karate
-set dterm_lpf1_dyn_expo = 7
+set profile_name = TT_KARAT
+set dterm_lpf1_dyn_expo = 10
 set vbat_sag_compensation = 100
-set crash_recovery = ON
-set iterm_relax_cutoff = 30
-set iterm_limit = 500
+set iterm_relax_cutoff = 45
 set pidsum_limit_yaw = 1000
-set p_pitch = 41
-set i_pitch = 70
-set d_pitch = 37
-set f_pitch = 110
-set p_roll = 41
-set i_roll = 70
-set d_roll = 37
-set f_roll = 111
-set d_min_roll = 37
-set d_min_pitch = 37
-set thrust_linear = 20
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
+set throttle_boost = 7
+set p_pitch = 42
+set i_pitch = 86
+set d_pitch = 53
+set f_pitch = 137
+set p_roll = 40
+set i_roll = 82
+set d_roll = 49
+set f_roll = 132
+set d_max_roll = 0
+set d_max_pitch = 0
 set feedforward_jitter_factor = 3
 set feedforward_boost = 18
-set dyn_idle_min_rpm = 200
+set dyn_idle_min_rpm = 60
 set dyn_idle_p_gain = 35
 set simplified_pids_mode = RP
-set simplified_master_multiplier = 155
-set simplified_i_gain = 95
-set simplified_d_gain = 80
-set simplified_pi_gain = 60
-set simplified_dmax_gain = 0
-set simplified_feedforward_gain = 60
-set simplified_pitch_d_gain = 90
-set simplified_pitch_pi_gain = 95
-set ez_landing_limit = 5
+set simplified_i_gain = 115
+set simplified_d_gain = 165
+set simplified_pi_gain = 90
+set simplified_feedforward_gain = 110
+set simplified_pitch_d_gain = 95
+set tpa_rate = 70
+set tpa_breakpoint = 1250
 
 profile 1
-
-# profile 1
-set profile_name = AOS 65mm
-set vbat_sag_compensation = 100
-set p_pitch = 71
-set i_pitch = 127
-set d_pitch = 44
-set f_pitch = 146
-set p_roll = 76
-set i_roll = 135
-set d_roll = 39
-set f_roll = 156
-set p_yaw = 76
-set i_yaw = 135
-set f_yaw = 156
-set angle_p_gain = 100
-set d_min_roll = 39
-set d_min_pitch = 44
-set d_max_advance = 0
-set thrust_linear = 25
-set feedforward_max_rate_limit = 95
-set dyn_idle_min_rpm = 100
-set dyn_idle_p_gain = 40
-set simplified_master_multiplier = 130
-set simplified_pi_gain = 130
-set simplified_dmax_gain = 0
-set simplified_pitch_pi_gain = 90
-set tpa_mode = PD
-set tpa_rate = 55
-set ez_landing_limit = 5
 
 profile 2
 
@@ -252,7 +200,6 @@ rateprofile 0
 # rateprofile 0
 set rateprofile_name = 533_ASYM
 set thr_mid = 100
-set thr_expo = 25
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -262,14 +209,11 @@ set yaw_expo = 25
 set roll_srate = 53
 set pitch_srate = 50
 set yaw_srate = 40
-set throttle_limit_type = SCALE
 
 rateprofile 1
 
 # rateprofile 1
 set rateprofile_name = 533
-set thr_mid = 100
-set thr_expo = 25
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -279,14 +223,11 @@ set yaw_expo = 56
 set roll_srate = 53
 set pitch_srate = 53
 set yaw_srate = 53
-set throttle_limit_type = SCALE
 
 rateprofile 2
 
 # rateprofile 2
 set rateprofile_name = 633
-set thr_mid = 100
-set thr_expo = 25
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
@@ -296,11 +237,10 @@ set yaw_expo = 62
 set roll_srate = 64
 set pitch_srate = 64
 set yaw_srate = 64
-set throttle_limit_type = SCALE
 
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 2
 
 # save configuration

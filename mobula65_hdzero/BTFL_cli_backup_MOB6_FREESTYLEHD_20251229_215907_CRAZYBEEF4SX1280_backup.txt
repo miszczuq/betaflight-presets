@@ -1,5 +1,3 @@
-defaults nosave
-
 
 # version
 # Betaflight / STM32F411 (S411) 4.5.2 Apr  8 2025 / 20:01:42 (024f8e13d) MSP API: 1.46
@@ -304,3 +302,4 @@ rateprofile 3
 rateprofile 0
 
 # save configuration
+save

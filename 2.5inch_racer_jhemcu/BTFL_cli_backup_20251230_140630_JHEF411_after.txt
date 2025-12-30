@@ -1,0 +1,218 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F411 (F411) 2025.12.1 Dec 30 2025 / 13:00:51 (85d201376) MSP API: 1.47
+# config rev: 46f5576
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name JHEF411
+manufacturer_id JHEF
+mcu_id 002300243233511139363337
+signature 
+
+# feature
+feature -AIRMODE
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# serial
+serial UART1 64 115200 57600 0 115200
+serial UART2 8192 115200 57600 0 115200
+
+# beeper
+beeper -DISARMING
+beeper -ARMING_GPS_FIX
+beeper -BAT_CRIT_LOW
+beeper -BAT_LOW
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -READY_BEEP
+beeper -DISARM_REPEAT
+beeper -ARMED
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+
+# beacon
+beacon RX_LOST
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 900 1275 0 0
+aux 2 13 1 1950 2025 0 0
+aux 3 13 1 1550 1600 0 0
+aux 4 13 1 1125 1200 0 0
+aux 5 28 1 1700 2100 0 0
+aux 6 35 5 1700 2100 1 0
+
+# vtxtable
+vtxtable bands 5
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665    0 5885 5905    0    0
+vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 4
+vtxtable powervalues 25 100 200 400
+vtxtable powerlabels 25 100 200 400
+
+# master
+set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 0
+set dyn_notch_count = 2
+set dyn_notch_min_hz = 150
+set dyn_notch_max_hz = 850
+set gyro_lpf1_dyn_min_hz = 0
+set gyro_lpf1_dyn_max_hz = 0
+set acc_calibration = -7,6,-42,1
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
+set dshot_bidir = ON
+set motor_poles = 12
+set align_board_yaw = 270
+set vbat_max_cell_voltage = 450
+set vbat_min_cell_voltage = 340
+set yaw_motors_reversed = ON
+set crashflip_rate = 50
+set pid_process_denom = 2
+set simplified_gyro_filter = OFF
+set report_cell_voltage = ON
+set osd_warn_bitmask = 313213
+set osd_link_quality_alarm = 50
+set osd_rssi_dbm_alarm = -98
+set osd_cap_alarm = 450
+set osd_tim1 = 1
+set osd_tim2 = 2
+set osd_rssi_pos = 312
+set osd_link_quality_pos = 2423
+set osd_rssi_dbm_pos = 2391
+set osd_tim_1_pos = 2114
+set osd_tim_2_pos = 139
+set osd_flymode_pos = 2439
+set osd_throttle_pos = 2369
+set osd_vtx_channel_pos = 2453
+set osd_crosshairs_pos = 237
+set osd_ah_pos = 110
+set osd_current_pos = 2400
+set osd_mah_drawn_pos = 2081
+set osd_craft_name_pos = 106
+set osd_pilot_name_pos = 2092
+set osd_warnings_pos = 2281
+set osd_avg_cell_voltage_pos = 2433
+set osd_disarmed_pos = 2315
+set osd_esc_rpm_pos = 161
+set osd_flip_arrow_pos = 2222
+set osd_core_temp_pos = 280
+set osd_log_status_pos = 2105
+set osd_rate_profile_name_pos = 2444
+set osd_stat_bitmask = 813696742
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 4
+set vtx_low_power_disarm = UNTIL_FIRST_ARM
+set vtx_freq = 5917
+set vcd_video_system = NTSC
+set rpm_filter_harmonics = 2
+set pilot_name = Misza
+
+profile 0
+
+# profile 0
+set profile_name = UAV
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set yaw_lowpass_hz = 0
+set p_pitch = 70
+set i_pitch = 126
+set d_pitch = 45
+set f_pitch = 187
+set p_roll = 67
+set i_roll = 120
+set f_roll = 180
+set p_yaw = 67
+set i_yaw = 120
+set f_yaw = 180
+set thrust_linear = 20
+set feedforward_jitter_factor = 3
+set feedforward_boost = 18
+set dyn_idle_min_rpm = 35
+set simplified_pids_mode = OFF
+set simplified_master_multiplier = 150
+set simplified_d_gain = 90
+set simplified_dterm_filter_multiplier = 120
+set ez_landing_limit = 5
+
+profile 1
+
+profile 2
+
+# profile 2
+set profile_name = Default
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = 533_ASYM
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 51
+set pitch_expo = 50
+set yaw_expo = 25
+set roll_srate = 53
+set pitch_srate = 50
+set yaw_srate = 40
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = 533
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 56
+set pitch_expo = 56
+set yaw_expo = 56
+set roll_srate = 53
+set pitch_srate = 53
+set yaw_srate = 53
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = 633
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
+set roll_expo = 62
+set pitch_expo = 62
+set yaw_expo = 62
+set roll_srate = 64
+set pitch_srate = 64
+set yaw_srate = 64
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration

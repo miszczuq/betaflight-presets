@@ -1,8 +1,9 @@
+defaults nosave
+
 
 # version
-# Betaflight / STM32F405 (S405) 4.4.3 Jan  8 2025 / 21:51:39 (738127e7e) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F405 (F405) 2025.12.1 Dec 30 2025 / 15:22:50 (85d201376) MSP API: 1.47
+# config rev: 46f5576
 
 # start the command batch
 batch start
@@ -18,13 +19,14 @@ signature
 # feature
 feature -AIRMODE
 feature GPS
+feature TELEMETRY
 feature LED_STRIP
 feature OSD
 feature ESC_SENSOR
 
 # serial
-serial 0 131073 115200 57600 0 115200
-serial 5 2 115200 115200 0 115200
+serial UART1 131073 115200 57600 0 115200
+serial UART6 2 115200 115200 0 115200
 
 # beeper
 beeper -DISARMING
@@ -41,29 +43,25 @@ beeper -ON_USB
 beeper -BLACKBOX_ERASE
 beeper -CAM_CONNECTION_OPEN
 beeper -CAM_CONNECTION_CLOSE
-beeper -RC_SMOOTHING_INIT_FAIL
 
 # beacon
 beacon RX_LOST
 beacon RX_SET
 
 # aux
-aux 0 0 3 1700 2100 0 0
+aux 0 0 0 1700 2100 0 0
 aux 1 1 1 900 1275 0 0
-aux 2 13 0 1700 2100 1 0
-aux 3 13 2 1300 1700 1 0
-aux 4 15 9 900 1300 0 0
-aux 5 28 1 1700 2100 0 0
-aux 6 28 1 900 1300 0 0
-aux 7 35 0 1700 2100 1 0
-aux 8 35 2 1700 2100 1 0
-aux 9 49 0 1700 2100 1 0
-aux 10 49 2 900 1300 1 0
+aux 2 3 4 1700 2100 0 0
+aux 3 11 4 1300 2100 0 0
+aux 4 46 6 1700 2100 0 0
+aux 5 13 1 1950 2025 0 0
+aux 6 13 1 1550 1600 0 0
+aux 7 13 1 1125 1200 0 0
+aux 8 28 1 1700 2100 0 0
+aux 9 35 5 1700 2100 1 0
 
 # adjrange
-adjrange 0 0 2 900 2100 12 2 0 0
-adjrange 1 0 5 900 2100 29 5 0 0
-adjrange 2 0 8 900 2100 30 8 0 0
+adjrange 1 0 3 900 2100 29 5 0 0
 
 # master
 set dyn_notch_count = 2
@@ -81,6 +79,8 @@ set vbat_max_cell_voltage = 450
 set vbat_min_cell_voltage = 340
 set force_battery_cell_count = 6
 set yaw_motors_reversed = ON
+set crashflip_rate = 30
+set crashflip_auto_rearm = ON
 set small_angle = 180
 set gps_sbas_mode = AUTO
 set gps_ublox_use_galileo = ON
@@ -124,8 +124,6 @@ set osd_efficiency_pos = 8695
 set osd_sys_bitrate_pos = 1452
 set osd_sys_delay_pos = 1484
 set osd_stat_bitmask = 2297448
-set osd_displayport_device = MSP
-set vcd_video_system = HD
 set rpm_filter_harmonics = 2
 set pilot_name = Misza
 
@@ -150,16 +148,13 @@ set f_roll = 210
 set p_yaw = 66
 set i_yaw = 118
 set f_yaw = 210
-set d_min_roll = 40
-set d_min_pitch = 45
 set thrust_linear = 20
-set feedforward_averaging = 2_POINT
 set feedforward_smooth_factor = 45
 set feedforward_jitter_factor = 8
 set dyn_idle_min_rpm = 35
+set simplified_pids_mode = OFF
 set simplified_master_multiplier = 135
 set simplified_pi_gain = 110
-set simplified_dmax_gain = 0
 set simplified_feedforward_gain = 130
 set simplified_dterm_filter_multiplier = 120
 
@@ -176,14 +171,13 @@ set p_roll = 51
 set i_roll = 92
 set d_roll = 53
 set f_roll = 138
-set d_min_roll = 43
-set d_min_pitch = 46
+set d_max_roll = 0
+set d_max_pitch = 0
 set dyn_idle_min_rpm = 35
 set dyn_idle_p_gain = 35
 set simplified_pids_mode = RP
 set simplified_d_gain = 145
 set simplified_pi_gain = 115
-set simplified_dmax_gain = 70
 set simplified_feedforward_gain = 115
 set simplified_pitch_d_gain = 95
 set simplified_pitch_pi_gain = 110
@@ -211,14 +205,13 @@ set f_roll = 249
 set p_yaw = 79
 set i_yaw = 126
 set f_yaw = 249
-set d_min_roll = 47
-set d_min_pitch = 54
+set d_max_roll = 0
+set d_max_pitch = 0
 set thrust_linear = 20
 set dyn_idle_min_rpm = 30
 set simplified_master_multiplier = 160
 set simplified_i_gain = 90
 set simplified_pi_gain = 110
-set simplified_dmax_gain = 0
 set simplified_feedforward_gain = 130
 set simplified_dterm_filter_multiplier = 120
 
@@ -233,25 +226,28 @@ profile 0
 rateprofile 0
 
 # rateprofile 0
-set rateprofile_name = Race533
+set rateprofile_name = F700_80
 set thr_mid = 100
+set thr_hover = 100
 set roll_rc_rate = 16
 set pitch_rc_rate = 16
 set yaw_rc_rate = 16
 set roll_expo = 56
 set pitch_expo = 56
 set yaw_expo = 56
-set roll_srate = 53
-set pitch_srate = 53
-set yaw_srate = 53
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+set throttle_limit_type = SCALE
+set throttle_limit_percent = 80
 
 rateprofile 1
 
 # rateprofile 1
-set rateprofile_name = Normal
-set roll_rc_rate = 15
-set pitch_rc_rate = 15
-set yaw_rc_rate = 15
+set rateprofile_name = FS700
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
 set roll_expo = 56
 set pitch_expo = 56
 set yaw_expo = 56
@@ -263,9 +259,9 @@ rateprofile 2
 
 # rateprofile 2
 set rateprofile_name = Tricks
-set roll_rc_rate = 14
-set pitch_rc_rate = 14
-set yaw_rc_rate = 14
+set roll_rc_rate = 16
+set pitch_rc_rate = 16
+set yaw_rc_rate = 16
 set roll_expo = 50
 set pitch_expo = 50
 set yaw_expo = 50
@@ -276,7 +272,6 @@ set yaw_srate = 90
 rateprofile 3
 
 # restore original rateprofile selection
-rateprofile 0
+rateprofile 1
 
 # save configuration
-save
